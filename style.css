@@ -1,0 +1,26 @@
+html,body{width: 1622px;}
+/*顶部不再提醒样式*/
+#noMoreReminder{font: 12px/35px Microsoft Yahei;background-color: #f3f3f3; width: 100%; }
+#noMoreReminder #noMoreReminder_content{width: 1205px;position: relative; margin: 0 auto;}
+#noMoreReminder #noMoreReminder_content a{color: #21A557;}
+#noMoreReminder #noMoreReminder_content #noReminderButton{position: absolute;right: 0;}
+
+/*banner样式*/
+#banner{width: 100%;}
+#banner #banner_nav{position:relative; width: 1205px; font: 12px Simsun; line-height: 28px; margin: 30px auto; height: 30px; vertical-align: middle;}
+#banner #banner_nav .edu{font: 28px Gill Sans MT;}
+#banner #banner_nav .edu span{color:#39A030; font-weight: bold;}
+#banner #banner_nav .guanzhu{display: inline-block; margin: auto 30px; font:12px/21px Simsun; color: white; width: 54px; height: 21px; background-color: #21A557; text-align: center;}
+#banner #banner_nav .threeproduct,#banner #banner_nav .threeproduct ul li{display: inline-block;}
+#banner #banner_nav .threeproduct{position: absolute;right: 0;}
+
+#banner #banner_threeproducts{width: 1205px; margin: 30px auto;}
+#banner #banner_threeproducts ul li{display: inline-block;width: 399px; vertical-align: top; position: relative;}
+#banner #banner_threeproducts ul li img,#banner #banner_threeproducts ul li div{display: inline-block;}
+#banner #banner_threeproducts ul li img{position: absolute;top: 0;}
+#banner #banner_threeproducts ul li div{width: 250px; font: 14px/1.14 Microsoft Yahei; margin-left:100px }
+#banner #banner_threeproducts ul li div p:first-child{font-size: 22px; margin-bottom:20px; }
+#banner #banner_threeproducts ul li div p:last-child{color:#39A030; margin-top: 33px;}
+
+#banner #banner_workEnvi{width: 100%}
+#banner #banner_workEnvi ul li{display: inline-block;}
