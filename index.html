@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<form action="http://study.163.com /webDev/login.htm" method="get" id="getLogin">
@@ -14,29 +15,67 @@
 	</form>
 	<div>
 		<p>请观看下面的视频</p>
-		<video src="http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4" controls poster="images/videoposter.png" autoplay></video>
+		<video src="http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4" controls poster="images/videoposter.png"></video>
 	</div>
 	<div id="noMoreReminder">
-		<span>网易云课堂微专业，帮助你掌握专业技能，令你求职或加薪多一份独特优势</span>
-		<a href="">立即查看></a>
-		<span id="noReminderButton">×不再提醒</span>
+		<div id="noMoreReminder_content">
+			<span>网易云课堂微专业，帮助你掌握专业技能，令你求职或加薪多一份独特优势!</span>
+			<a href="">立即查看></a>
+			<span id="noReminderButton">×不再提醒</span>
+		</div>
 	</div>
-
 	<div id="banner">
-		<ul>
-			<li><img src="images/banner1.jpg" alt=""></li>
-			<li><img src="images/banner2.jpg" alt=""></li>
-			<li><img src="images/banner3.jpg" alt=""></li>
-		</ul>
-	</div>
+		<div id="banner_nav">
+			<span class="edu"><span>EDU | </span>网易教育产品部 </span>
+			<span class="guanzhu">+关注</span>
+			<span>粉丝 45</span>
+			<div class="threeproduct">
+				<ul class="">
+					<li>网易公开课</li>
+					<li>云课堂</li>
+					<li>中国大学MOOC</li>
+					<li><img src="images/fangdajingicon.png" alt=""></li>
+				</ul>
+			</div>
+		</div>
 
-	<div id="jigouIntro">
-		<div></div>
-		<div></div>
-		<div></div>
-	</div>
+		<div id="banner_pic">
+			<ul>
+				<li><img src="images/banner1.jpg" alt=""></li>
+				<li><img src="images/banner2.jpg" alt=""></li>
+				<li><img src="images/banner3.jpg" alt=""></li>
+			</ul>
+		</div>
 
-	<div id="workEnvi">
+		<div id="banner_threeproducts">
+			<ul>
+				<li>
+					<img src="images/opencourseicon.png" alt="">
+					<div>
+						<p>网易公开课</p>
+						<p>推出国内外名校公开课，涉及广泛的学科，名校老师认真讲解深度剖析，网易视频公开课频道搭建起强有力的网络视频教学平台。</p>
+						<p>了解更多 ></p>
+					</div>
+				</li>
+				<li>
+					<img src="images/yunketangicon.png" alt="">
+					<div>
+						<p>云课堂</p>
+						<p>网易旗下大型在线学习平台，该平台面向学习者提供海量免费、优质课程,创新的个性化学习体验，自由开放的交流互动环境。</p>
+						<p>了解更多 ></p>
+					</div>
+				</li>
+				<li>
+					<img src="images/moocicon.png" alt="">
+					<div>
+						<p>中国大学MOOC</p>
+						<p>是爱课程网携手云课堂打造的在线学习平台，每一个有提升愿望的人,都可以在这里学习中国最好的大学课程，学完还能获得认证证书。</p>
+						<p>了解更多 ></p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div id="banner_workEnvi">
 		<ul>
 			<li><img src="images/work1.jpg" alt=""></li>
 			<li><img src="images/work2.jpg" alt=""></li>
@@ -45,6 +84,9 @@
 			<li><img src="images/work5.jpg" alt=""></li>
 		</ul>
 	</div>
+	</div>
+	
+	
 	<div id="course">
 		<div id="main">
 			<div id="tab">
