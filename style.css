@@ -8,7 +8,7 @@ html,body{width: 1622px;}
 /*banner样式*/
 #banner{width: 100%;}
 #banner #banner_nav{position:relative; width: 1205px; font: 12px Simsun; line-height: 28px; margin: 30px auto; height: 30px; vertical-align: middle;}
-#banner #banner_nav .edu{font: 28px Gill Sans MT;}
+.edu{font: 28px Gill Sans MT;}
 #banner #banner_nav .edu span{color:#39A030; font-weight: bold;}
 #banner #banner_nav .guanzhu{display: inline-block; margin: auto 30px; font:12px/21px Simsun; color: white; width: 54px; height: 21px; background-color: #21A557; text-align: center;}
 #banner #banner_nav .threeproduct,#banner #banner_nav .threeproduct ul li{display: inline-block;}
@@ -45,3 +45,15 @@ html,body{width: 1622px;}
 #course #side #side_jigouIntro #side_jigouIntro_video p{margin: 21px 0 9px; font-size: 14px; color:#666; }
 
 #course #side #side_hotlist{height: 780px;border: 1px solid #D4D3D3; border-top: none;}
+
+/*footer*/
+#footer{width: 100%; height: 262px;background-color: #2C3339; color: #999; font: 14.58px Microsoft Yahei; position: relative; bottom: 0;}
+#footer #footer_content{width: 1205px; margin: 0 auto; padding:80px 0 80px 50px; height: 100px;}
+#footer #footer_content_right ul li {display: inline-block; vertical-align: top; height: 100px; margin: 0 0 0 100px;}
+#footer #footer_content_right ul li p:first-child{margin-top: 0; font-size: 12.5px;}
+#footer #footer_content_right ul li a {color: #999;}
+#footer #footer_content_left{float: left;}
+#footer #footer_content_left p{color: #39A030; margin-bottom: 15px;}
+#footer #footer_content_right li p{margin-top: 10px;}
+
+#footer #footer_content_left li{margin-top: 15px;}
