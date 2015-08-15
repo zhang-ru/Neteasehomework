@@ -1,4 +1,4 @@
-html,body{width: 1622px;}
+html,body{width: 100%;}
 /*遮罩*/
 .mask{display:none;position: fixed;top: 0;bottom: 0;height: 100%;width: 100%;z-index: 999; background-color: rgba(0,0,0,0.5)}
 
@@ -18,14 +18,23 @@ html,body{width: 1622px;}
 
 /*banner样式*/
 #banner{width: 100%;}
-#banner #banner_nav{position:relative; width: 1205px; font: 12px Simsun; line-height: 28px; margin: 30px auto; height: 30px; vertical-align: middle;}
+
+
+#banner #banner_nav{display:flex;align-items:center; position:relative; width: 1205px; font: 12px Simsun; line-height: 28px; margin: 30px auto; height: 30px; vertical-align: middle;}
 .edu{font: 28px Gill Sans MT;}
 #banner #banner_nav .edu span{color:#39A030; font-weight: bold;}
 #banner #banner_nav .guanzhu{display: inline-block; margin: auto 30px; font:12px/21px Simsun; color: white; width: 54px; height: 21px; background-color: #21A557; text-align: center;}
-#banner #banner_nav .threeproduct,#banner #banner_nav .threeproduct ul li{display: inline-block;}
-#banner #banner_nav .threeproduct{position: absolute;right: 0;}
+#banner #banner_nav .threeproduct{display: inline-block; position: absolute;right: 0;}
+#banner #banner_nav .threeproduct ul li{display: inline-block; font: 16px Microsoft Yahei; margin-left: 55px;}
 
-#banner #banner_threeproducts{width: 1205px; margin: 30px auto;}
+#banner #banner_pic{position: relative;z-index: 1; height: 400px;}
+#banner #banner_pic .bannerpic li{position: absolute; z-index: -9999;}
+#banner #banner_pic ul li img{width: 100%;}
+#banner #banner_pic .quanquan{position: absolute;bottom: 40px;z-index: 10000; left: 50%; width: 84px; margin-left: -42px;}
+#banner #banner_pic .quanquan li{width:12px; height:12px;margin-right: 12px; display: inline-block;background-color: white; z-index: 2; border-radius: 50%;}
+
+
+#banner #banner_threeproducts{width: 1205px; margin: 30px auto; position: relative;}
 #banner #banner_threeproducts ul li{display: inline-block;width: 399px; vertical-align: top; position: relative;}
 #banner #banner_threeproducts ul li img,#banner #banner_threeproducts ul li div{display: inline-block;}
 #banner #banner_threeproducts ul li img{position: absolute;top: 0;}
@@ -33,8 +42,9 @@ html,body{width: 1622px;}
 #banner #banner_threeproducts ul li div p:first-child{font-size: 22px; margin-bottom:20px; }
 #banner #banner_threeproducts ul li div p:last-child{color:#39A030; margin-top: 33px;}
 
-#banner #banner_workEnvi{width: 100%}
-#banner #banner_workEnvi ul li{display: inline-block;}
+#banner #banner_workEnvi{width: 100%; overflow: hidden;}
+#banner #banner_workEnvi ul li{display: inline-block;width:19.62%;}
+#banner #banner_workEnvi ul li img{width: 100%;}
 
 /*course样式*/
 #course{width: 1205px; margin: 80px auto; position: relative;}
@@ -45,7 +55,7 @@ html,body{width: 1622px;}
 /*翻页样式*/
 #course #main #pageNo{display: inline-block;position:absolute; right: 0; bottom: 0;}
 #course #main #pageNo ul li{display: inline-block; margin: 10px; font: 14px Microsoft Yahei;}
-#course #main #pageNo ul li.direct,#course #main #pageNo ul li.clicked{ background-color: rgba(57,160,48,0.5); color: rgba(255,255,255,0.8); height: 20px;width: 30px;text-align: center;}
+#course #main #pageNo ul li.direct,#course #main #pageNo ul li.clicked{ background-color: rgb(57,160,48); opacity:0.5;color:rgb(255,255,255); height: 20px;width: 30px;text-align: center;}
 #course #main #pageNo ul li.clicked{width: 20px;}
 
 /*course侧栏*/
