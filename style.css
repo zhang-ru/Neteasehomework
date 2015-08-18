@@ -24,6 +24,10 @@ html,body{width: 100%;}
 .edu{font: 28px Gill Sans MT;}
 #banner #banner_nav .edu span{color:#39A030; font-weight: bold;}
 #banner #banner_nav .guanzhu{display: inline-block; margin: auto 30px; font:12px/21px Simsun; color: white; width: 54px; height: 21px; background-color: #21A557; text-align: center;}
+#banner #banner_nav .alreadyguanzhu{ border: 1px solid #efefef; line-height: 12px; font-family: Microsoft Yahei; margin: 0 30px;padding: 0 5px;}
+#banner #banner_nav .alreadyguanzhu span{display: inline-block; font:12px/21px Simsun;text-align: center;}
+#banner #banner_nav .alreadyguanzhu a{color: #ccc}
+
 #banner #banner_nav .threeproduct{display: inline-block; position: absolute;right: 0;}
 #banner #banner_nav .threeproduct ul li{display: inline-block; font: 16px Microsoft Yahei; margin-left: 55px;}
 #banner #banner_nav .threeproduct ul li:hover{color: #39a030;}
@@ -57,7 +61,7 @@ html,body{width: 100%;}
 #course #main #tab:after{content: '.';display: block;clear: both;visibility: hidden;height: 0;overflow: none;}
 #course #main #courseList ul{position: relative;top: 30px;}
 #course #main #courseList .main_course{width: 24%; margin-right: 0.8%; margin-bottom: 10px;box-sizing:border-box;border: 1px solid #f1f1f1; padding:1px; float: left; box-shadow: 0px 1px 4px #cecece;}
-#course #main #courseList .main_course .main_course_pic{width: 100%;}
+#course #main #courseList .main_course .main_course_pic{width: 100%; height: 122px;}
 #course #main #courseList .main_course p{margin-top: 10px;margin-left: 2px;}
 #course #main #courseList .main_course:hover{color: #39a030;box-shadow: 0px 1px 4px black;}
 #course #main #courseList .main_course .course_intro{font: 12px Microsoft Yahei; overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
