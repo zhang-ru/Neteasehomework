@@ -13,7 +13,7 @@ html,body{width: 100%;}
 /*顶部不再提醒样式*/
 #noMoreReminder{font: 12px/35px Microsoft Yahei;background-color: #f3f3f3; width: 100%; }
 #noMoreReminder #noMoreReminder_content{width: 1205px;position: relative; margin: 0 auto;}
-#noMoreReminder #noMoreReminder_content a{color: #21A557;}
+#noMoreReminder #noMoreReminder_content>a{color: #21A557;}
 #noMoreReminder #noMoreReminder_content #noReminderButton{position: absolute;right: 0;}
 
 /*banner样式*/
@@ -23,8 +23,8 @@ html,body{width: 100%;}
 #banner #banner_nav{display:flex;align-items:center; position:relative; width: 1205px; font: 12px Simsun; line-height: 28px; margin: 30px auto; height: 30px; vertical-align: middle;}
 .edu{font: 28px Gill Sans MT;}
 #banner #banner_nav .edu span{color:#39A030; font-weight: bold;}
-#banner #banner_nav .guanzhu{display: inline-block; margin: auto 30px; font:12px/21px Simsun; color: white; width: 54px; height: 21px; background-color: #21A557; text-align: center;}
-#banner #banner_nav .alreadyguanzhu{ border: 1px solid #efefef; line-height: 12px; font-family: Microsoft Yahei; margin: 0 30px;padding: 0 5px;}
+#banner #banner_nav .guanzhu a{display: inline-block; margin: auto 30px; font:12px/21px Simsun; color: white; width: 54px; height: 21px; background-color: #21A557; text-align: center;}
+#banner #banner_nav .alreadyguanzhu{display: none; border: 1px solid #efefef; line-height: 12px; font-family: Microsoft Yahei; margin: 0 30px;padding: 0 5px;}
 #banner #banner_nav .alreadyguanzhu span{display: inline-block; font:12px/21px Simsun;text-align: center;}
 #banner #banner_nav .alreadyguanzhu a{color: #ccc}
 
@@ -71,7 +71,7 @@ html,body{width: 100%;}
 
 /*翻页样式*/
 #course #main #pageNo{display: inline-block;position:absolute; right: 0; bottom: -90px;}
-#course #main #pageNo ul li{display: inline-block;  font: 14px Microsoft Yahei; width: 20px;}
+#course #main #pageNo ul li{display: inline-block;  font: 14px Microsoft Yahei; width: 20px; text-align: center;}
 #course #main #pageNo ul li.direct{ background-color: rgb(57,160,48); margin: 10px;opacity:0.5;color:rgb(255,255,255); height: 20px;width: 30px;text-align: center;}
 #course #main #pageNo ul li:hover{ background-color: rgb(57,160,48);opacity:0.5;color:rgb(255,255,255); text-align: center;}
 #course #main #pageNo ul li:active{color: #39a030; background-color: white; opacity: 1;}

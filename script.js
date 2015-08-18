@@ -99,8 +99,8 @@ function ajax(obj){
     function callback() {
         if (xhr.status == 200) {
             obj.success(xhr.responseText);            //回调传递参数
-        } else {
-            alert('错误代号：' + xhr.status + '，错误信息：' + xhr.statusText);
+        } else { 
+            alert(xhr.responseText+'AJAX出错,错误代号：' + xhr.status + '，错误信息：' + xhr.statusText+',请重试!');
         }    
     }
 }
@@ -228,15 +228,16 @@ var alreadyguanzhu=document.getElementsByClassName('alreadyguanzhu')[0];
 var follower_num =document.getElementsByClassName('follower')[0];
     //关注按钮添加事件
 EventUtil.addHandler(guanzhu_button,'click',function(){
+    alreadyguanzhu.style.display='block';
+    guanzhu_button.style.display='none';
+    follower_num.innerHTML="粉丝 46";
     ajax({
         method : 'get',
         url : 'http://study.163.com/webDev/attention.htm',
-        data : null,
+        data : {'t':'today'},
         success : function (data) {
             if(data == '1'){
-                alreadyguanzhu.style.display='block';
-                guanzhu_button.style.display='none';
-                follower_num.innerHTML="粉丝 46";
+                alert('关注成功');
                 setCookie('followSuc',1);
             }
         },
@@ -247,14 +248,18 @@ EventUtil.addHandler(guanzhu_button,'click',function(){
 if(getCookie()['followSuc'] == '1'){
     alreadyguanzhu.style.display='block';
     guanzhu_button.style.display='none';
+    follower_num.innerHTML="粉丝 46";
 }else{
     alreadyguanzhu.style.display='none';
     guanzhu_button.style.display='block';
+    follower_num.innerHTML="粉丝 45";
 }
 //取消关注
 var cancelguanzhu=document.getElementById('cancelguanzhu');
 EventUtil.addHandler(cancelguanzhu,'click',function(){
     alreadyguanzhu.style.display='none';
     guanzhu_button.style.display='block';
+    follower_num.innerHTML="粉丝 45";
     setCookie('followSuc',0);
-})
+    alert('取消关注成功');
+});
