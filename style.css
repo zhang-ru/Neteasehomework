@@ -1,4 +1,4 @@
-html,body{width: 100%;}
+/html,body{width: 100%;}
 /*遮罩*/
 .mask{display:none;position: fixed;top: 0;bottom: 0;height: 100%;width: 100%;z-index: 999; background-color: rgba(0,0,0,0.5)}
 .clearfix:after{content:'.';display: block;clear: both;visibility: hidden;height: 0;overflow: none; }
