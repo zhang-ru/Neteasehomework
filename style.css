@@ -6,9 +6,10 @@ html,body{width: 100%;}
 #up_video p{margin-bottom: 20px;}
 #up_video .close_button{position: absolute; top: 10px; right: 10px;}
 
-#login_box{ display: none;position:fixed; transform:translate(-50%,-50%); top:50%; left:50%; z-index: 2000; width: 297px;height: 218px; background-color: white; padding: 30px 50px 40px 40px; font: 18px Microsoft Yahei;}
+#login_box{display: none; position:fixed; transform:translate(-50%,-50%); top:50%; left:50%; z-index: 2000; width: 297px;height: 218px; background-color: white; padding: 30px 50px 40px 40px; font: 18px Microsoft Yahei;}
 #login_box #login_form input{display: block;font: 16px Microsoft Yahei; text-indent: 0.5em; width: 295px; height: 45px; margin-top:20px; box-sizing:border-box; border:1px solid #DFDFDF; box-shadow: -1px -1px 2px #F1F1F1 inset; }
 #login_box #login_form button{display: block; border: 1px solid #2AB050; box-shadow: 1px 1px #D5E3DA; width: 295px; height: 45px; margin-top: 30px; font: 16px Microsoft Yahei; color: #fff; text-align: center; background: linear-gradient(#24AC47,#13912B)}
+#login_box .close_button{position: absolute; top: 10px; right: 10px;}
 
 /*顶部不再提醒样式*/
 #noMoreReminder{font: 12px/35px Microsoft Yahei;background-color: #f3f3f3; width: 100%; }
