@@ -74,7 +74,7 @@
 
 /*翻页样式*/
 #course #main #pageNo{display: inline-block;position:absolute; right: 0; bottom: -90px;}
-#course #main #pageNo ul li{display: inline-block;  font: 14px Microsoft Yahei; width: 20px; text-align: center;}
+#course #main #pageNo ul li{cursor: pointer; display: inline-block;  font: 14px Microsoft Yahei; width: 20px; text-align: center;}
 #course #main #pageNo ul li.direct{ background-color: rgb(57,160,48); margin: 10px;opacity:0.5;color:rgb(255,255,255); height: 20px;width: 30px;text-align: center;}
 #course #main #pageNo ul li:hover{ background-color: rgb(57,160,48);opacity:0.5;color:rgb(255,255,255); text-align: center;}
 #course #main #pageNo ul li:active{color: #39a030; background-color: white; opacity: 1;}

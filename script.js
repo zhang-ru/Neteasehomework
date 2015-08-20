@@ -324,13 +324,15 @@ EventUtil.addHandler(login_button,'click',login_fun);
     loginBox.style.display='none';
    
  });
- //判断当前页面
- var page_list=document.getElementById('pageNo');
- var page_aLi=page_list.getElementsByTagName('li');
- for(var i=1;i<page_aLi.length-1;i++){
-    page_aLi[i].removeAttribute('class');
-    EventUtil.addHandler(page_aLi[i],'click',function(){this.setAttribute('class','currentpage')})
- }
+ 
+// 回到首页
+var backtopage1=function(){
+    var page_aLi=page_list.getElementsByTagName('li');
+    page_aLi[1].setAttribute('class','currentpage');
+    for(var i =2;i<9;i++){
+        page_aLi[i].removeAttribute('class');
+    }
+}
 //tab 切换
 var main_course_tab1=document.getElementById('main_course_tab1');
 var main_course_tab2=document.getElementById('main_course_tab2');
@@ -348,6 +350,7 @@ EventUtil.addHandler(main_course_tab2,'click',function(){
     success : ajax_success,
     async : true
     });
+    backtopage1();
 });
 EventUtil.addHandler(main_course_tab1,'click',function(){
     main_course_tab2.setAttribute('class','main_course_tab');
@@ -363,5 +366,84 @@ EventUtil.addHandler(main_course_tab1,'click',function(){
     },
     success : ajax_success,
     async : true
+    });
+    backtopage1();
 });
-});
+
+//判断当前课程type
+var page_type = function(){
+
+    if(main_course_tab1.className=='main_course_tab_checked'){return '10'}
+    else if(main_course_tab2.className=='main_course_tab_checked'){return '20';}
+}
+//判断当前页面API
+
+ //判断当前点击页面并实现点击页面切换课程
+ 
+ var page_list=document.getElementById('pageNo');
+ var page_aLi=page_list.getElementsByTagName('li');
+ for(var i=1;i<9;i++){
+    
+    page_aLi[i].onclick=function(){
+        var currentPage=this.innerHTML;
+        for(var i=1;i<9;i++){
+            if(currentPage==i){page_aLi[i].setAttribute('class','currentpage')}
+            else{page_aLi[i].removeAttribute('class');}
+            ajax({
+            method : 'get',
+            url : 'http://study.163.com/webDev/couresByCategory.htm',
+            data : {
+                'pageNo':currentPage,
+                'psize':'20',
+                'type':page_type()
+            },
+            success : ajax_success,
+            async : true
+            });
+        }
+    }
+ }
+ //判断当前页面并设置左右翻页键
+ var direct_left=document.getElementsByClassName('direct_left')[0];
+ var direct_right=document.getElementsByClassName('direct_right')[0];
+ direct_left.onclick=function(){
+    var current_active_page=document.getElementsByClassName('currentpage')[0].innerHTML;
+
+    if(current_active_page>=2){
+        ajax({
+            method : 'get',
+            url : 'http://study.163.com/webDev/couresByCategory.htm',
+            data : {
+                'pageNo':current_active_page-1,
+                'psize':'20',
+                'type':page_type()
+            },
+            success : ajax_success,
+            async : true
+        });
+        page_aLi[current_active_page].removeAttribute('class');
+        page_aLi[current_active_page-1].setAttribute('class','currentpage');
+    }
+ }
+ 
+ direct_right.onclick=function(){
+    var current_active_page=document.getElementsByClassName('currentpage')[0].innerHTML;
+
+    if(current_active_page<8){
+        ajax({
+            method : 'get',
+            url : 'http://study.163.com/webDev/couresByCategory.htm',
+            data : {
+                'pageNo':++current_active_page,
+                'psize':'20',
+                'type':page_type()
+            },
+            success : ajax_success,
+            async : true
+        });
+        page_aLi[current_active_page-1].removeAttribute('class');
+        page_aLi[current_active_page].setAttribute('class','currentpage');
+    }
+ }
+ 
+
