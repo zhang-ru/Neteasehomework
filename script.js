@@ -100,7 +100,7 @@ function ajax(obj){
         if (xhr.status == 200) {
             obj.success(xhr.responseText);            //回调传递参数
         } else { 
-            alert(xhr.responseText+'AJAX出错,错误代号：' + xhr.status + '，错误信息：' + xhr.statusText+',请重试!');
+            alert('调用AJAX出错,错误代号：' + xhr.status + ' , 请稍后刷新重试!');
         }    
     }
 }
@@ -149,7 +149,7 @@ ajax({
     method : 'get',
     url : 'http://study.163.com/webDev/couresByCategory.htm',
     data : {
-        'pageNo':'2',
+        'pageNo':'1',
         'psize':'20',
         'type':'10'
     },
@@ -194,21 +194,7 @@ ajax({
     },
     async : true
 });
-//登录
-// ajax({
-//     method : 'get',
-//     url : 'http://study.163.com/webDev/login.htm',
-//     data : {
-//         'userName' : md5('studyOnline'),
-//         'password' : md5('study.163.com')
-//     },
-//     success : function(data){
-//         if(data == '1'){alert('login success')}
-//         else{alert('login failed')}
-//     },
-//     async : true
-// }
-// )
+
 //判断不再提醒cookie
 var nomore_reminder=document.getElementById('noReminderButton');
 var noReminderBar=document.getElementById('noMoreReminder');
@@ -216,22 +202,13 @@ var no_reminder;
 EventUtil.addHandler(nomore_reminder,'click', function(){
     setCookie('no_reminder',1,5);
     noReminderBar.style.display='none';
-})
+});
 if(getCookie()['no_reminder'] == '1'){
     noReminderBar.style.display='none';
 }
 
 
-//登陆
- var mask=document.getElementById('mask');
- var loginBox=document.getElementById('login_box');
- var cancleLogin=loginBox.getElementsByClassName('close_button')[0];
- EventUtil.addHandler(cancleLogin,'click',function(){
-    mask.style.display='none';
-    loginBox.style.display='none';
-    
- })
- 
+
 //关注
 
 var guanzhu_button=document.getElementsByClassName('guanzhu')[0].getElementsByTagName('a')[0];
@@ -282,3 +259,45 @@ EventUtil.addHandler(cancelguanzhu,'click',function(){
     setCookie('followSuc',0);
     alert('取消关注成功');
 });
+
+//登陆
+ var login_account=document.getElementById('login_account');
+ var login_password=document.getElementById('login_password');
+ var login_button=document.getElementById('login_button');
+ var login_form=document.getElementById('login_form');
+ var login_fun=function(){
+    ajax({
+    method : 'get',
+    url : 'http://study.163.com/webDev/login.htm',
+    data : {
+        'userName' : md5(login_account.value),
+        'password' : md5(login_password.value)
+    },
+    success : function(data){
+        if(data == '1'){
+            alert('login success');
+            mask.style.display='none';
+            loginBox.style.display='none';
+            setCookie('loginSuc',1);
+            alreadyguanzhu.style.display='block';
+            guanzhu_button.style.display='none';
+            follower_num.innerHTML="粉丝 46";
+        }
+        else{alert('login failed')}
+        },
+    async : true
+    })
+ }
+EventUtil.addHandler(login_button,'click',login_fun);
+
+
+
+ var mask=document.getElementById('mask');
+ var loginBox=document.getElementById('login_box');
+ var cancleLogin=loginBox.getElementsByClassName('close_button')[0];
+ //关闭登录框
+ EventUtil.addHandler(cancleLogin,'click',function(){
+    mask.style.display='none';
+    loginBox.style.display='none';
+   
+ });

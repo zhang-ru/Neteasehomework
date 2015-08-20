@@ -33,7 +33,7 @@
 #banner #banner_nav .threeproduct ul li{display: inline-block; font: 16px Microsoft Yahei; margin-left: 55px;}
 #banner #banner_nav .threeproduct ul li:hover{color: #39a030;}
 
-#banner #banner_pic{position: relative;z-index: 1; height: 400px;}
+#banner #banner_pic{position: relative;z-index: 1; height: 430px;}
 #banner #banner_pic .bannerpic li{position: absolute; z-index: -9999;}
 #banner #banner_pic ul li img{width: 100%;}
 #banner #banner_pic .quanquan{position: absolute;bottom: 40px;z-index: 10000; left: 50%; width: 84px; margin-left: -42px;}
