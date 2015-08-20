@@ -64,9 +64,31 @@ var EventUtil = {
 // 封装ajax
 function ajax(obj){
 	// create xhr object
-	var xhr=new XMLHttpRequest();
+	var xhr = (function () {
+        /*创建XMLHttpRequest对象*/
+        if (typeof XMLHttpRequest != 'undefined') {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            return new XMLHttpRequest();
+        } else if (typeof ActiveXObject != 'undefined') {
+            // code for IE6, IE5
+            var version = [
+                                        'MSXML2.XMLHttp.6.0',
+                                        'MSXML2.XMLHttp.3.0',
+                                        'MSXML2.XMLHttp'
+            ];
+            for (var i = 0; version.length; i ++) {
+                try {
+                    return new ActiveXObject(version[i]);
+                } catch (e) {
+                    //跳过
+                }    
+            }
+        } else {
+            throw new Error('您的系统或浏览器不支持XHR对象！');
+        }
+    })();
 	// 给url加随机参数，防止缓存;
-	// obj.url=obj.url+'?t='+new Date().getTime();
+	obj.url=obj.url+'?t='+new Date().getTime();
 	//给data进行格式化
 	obj.data=(function(data){
 		var arr=[];
@@ -109,7 +131,7 @@ function ajax_success(data){
     var _data= JSON.parse(data);
 
         var oDiv = document.getElementById("courselist_ajax");
-
+        oDiv.innerHTML='';
         for(i=0;i<_data.list.length;i++){
             var oLi = document.createElement("li");
             oLi.setAttribute("class","main_course");
@@ -275,15 +297,16 @@ EventUtil.addHandler(cancelguanzhu,'click',function(){
     },
     success : function(data){
         if(data == '1'){
-            alert('login success');
+            alert('登录成功');
             mask.style.display='none';
             loginBox.style.display='none';
             setCookie('loginSuc',1);
+            setCookie('followSuc',1);
             alreadyguanzhu.style.display='block';
             guanzhu_button.style.display='none';
             follower_num.innerHTML="粉丝 46";
         }
-        else{alert('login failed')}
+        else{alert('登录失败，请重试')}
         },
     async : true
     })
@@ -301,3 +324,44 @@ EventUtil.addHandler(login_button,'click',login_fun);
     loginBox.style.display='none';
    
  });
+ //判断当前页面
+ var page_list=document.getElementById('pageNo');
+ var page_aLi=page_list.getElementsByTagName('li');
+ for(var i=1;i<page_aLi.length-1;i++){
+    page_aLi[i].removeAttribute('class');
+    EventUtil.addHandler(page_aLi[i],'click',function(){this.setAttribute('class','currentpage')})
+ }
+//tab 切换
+var main_course_tab1=document.getElementById('main_course_tab1');
+var main_course_tab2=document.getElementById('main_course_tab2');
+EventUtil.addHandler(main_course_tab2,'click',function(){
+    main_course_tab1.setAttribute('class','main_course_tab');
+    main_course_tab2.setAttribute('class','main_course_tab_checked');
+    ajax({
+    method : 'get',
+    url : 'http://study.163.com/webDev/couresByCategory.htm',
+    data : {
+        'pageNo':'1',
+        'psize':'20',
+        'type':'20'
+    },
+    success : ajax_success,
+    async : true
+    });
+});
+EventUtil.addHandler(main_course_tab1,'click',function(){
+    main_course_tab2.setAttribute('class','main_course_tab');
+    main_course_tab1.setAttribute('class','main_course_tab_checked');
+
+    ajax({
+    method : 'get',
+    url : 'http://study.163.com/webDev/couresByCategory.htm',
+    data : {
+        'pageNo':'1',
+        'psize':'20',
+        'type':'10'
+    },
+    success : ajax_success,
+    async : true
+});
+});
