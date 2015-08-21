@@ -130,12 +130,12 @@ function ajax(obj){
 function ajax_success(data){
     var _data= JSON.parse(data);
 
-        var oDiv = document.getElementById("courselist_ajax");
-        oDiv.innerHTML='';
+        var oUl = document.getElementById("courselist_ajax");
+        oUl.innerHTML='';
         for(i=0;i<_data.list.length;i++){
             var oLi = document.createElement("li");
             oLi.setAttribute("class","main_course");
-            oDiv.appendChild(oLi);
+            oUl.appendChild(oLi);
 
             var _img = document.createElement("img");
             var _description = document.createElement("p");
@@ -163,6 +163,13 @@ function ajax_success(data){
             oLi.appendChild(_name);
             oLi.appendChild(_follower);
             oLi.appendChild(_price);
+            //xuanfu
+            oLi.onmouseover=function(){
+                this.setAttribute('class','main_course_hover');
+            }
+            oLi.onmouseout=function(){
+                this.setAttribute('class','main_course');
+            }
             
         }
 }
@@ -179,41 +186,45 @@ ajax({
     async : true
 });
 //热门推荐ajax
+function hot_list_fun(data){
+        var _data= eval(data);
+        var oUl = document.getElementById("side_courselist_ajax");
+        var timer=0;
+            setInterval(function(){
+                oUl.innerHTML='';
+                
+                    for(var i=timer+0;i<10+timer && i<20;i++){
+                        var oLi = document.createElement("li");
+                        
+                        oUl.appendChild(oLi);
+
+                        var _img = document.createElement("img");
+                        var _name = document.createElement("p");
+                        var _follower = document.createElement("p");
+
+                        _img.setAttribute("class", "side_course");
+                        _img.setAttribute("src", _data[i].smallPhotoUrl);
+
+                        _name.setAttribute("class","side_course_title");
+                        _name.innerHTML=_data[i].name;
+
+                        _follower.innerHTML=_data[i].learnerCount;
+
+                        oLi.appendChild(_img);
+                        oLi.appendChild(_name);
+                        oLi.appendChild(_follower);
+                    
+                     }
+                     timer>=10?timer=10:timer++;
+            },5000);
+
+        
+}
 ajax({
     method : 'get',
-    url : 'http://study.163.com/webDev/couresByCategory.htm',
-    data : {
-        'pageNo':'1',
-        'psize':'10',
-        'type':'10'
-    },
-    success : function (data) {
-        var _data= JSON.parse(data);
-
-        var oDiv = document.getElementById("side_courselist_ajax");
-
-        for(i=0;i<_data.list.length;i++){
-            var oLi = document.createElement("li");
-            oDiv.appendChild(oLi);
-
-            var _img = document.createElement("img");
-            var _description = document.createElement("p");
-            var _follower = document.createElement("p");
-
-            _img.setAttribute("class", "side_course");
-            _img.setAttribute("src", _data.list[i].smallPhotoUrl);
-
-            _description.setAttribute("class","side_course_title");
-            _description.innerHTML=_data.list[i].description;
-
-            _follower.innerHTML=_data.list[i].learnerCount;
-
-            oLi.appendChild(_img);
-            oLi.appendChild(_description);
-            oLi.appendChild(_follower);
-            
-        }
-    },
+    url : 'http://study.163.com/webDev/hotcouresByCategory.htm',
+    data : {},
+    success : hot_list_fun,
     async : true
 });
 
@@ -446,4 +457,15 @@ var page_type = function(){
     }
  }
  
-
+//点击侧栏机构介绍视频播放
+var side_jigouIntro_video=document.getElementById('side_jigouIntro_video');
+var up_video=document.getElementById('up_video');
+EventUtil.addHandler(side_jigouIntro_video,'click',function(){
+    mask.style.display='block';
+    up_video.style.display="block";
+});
+var close_video=up_video.getElementsByClassName('close_button')[0];
+EventUtil.addHandler(close_video,'click',function(){
+    mask.style.display='none';
+    up_video.style.display='none';
+})

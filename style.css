@@ -2,7 +2,7 @@
 /*遮罩*/
 .mask{display:none;position: fixed;top: 0;bottom: 0;height: 100%;width: 100%;z-index: 999; background-color: rgba(0,0,0,0.5)}
 .clearfix:after{content:'.';display: block;clear: both;visibility: hidden;height: 0;overflow: none; }
-#up_video{ display: none; width: 890px; height: 675px; padding: 30px 30px 40px;transform:translate(-50%,-50%); position: fixed; z-index: 2000; background-color: white; font: 18px Microsoft Yahei;}
+#up_video{display: none;left: 50%;top: 50%; width: 890px; height: 675px; padding: 30px 30px 40px;transform:translate(-50%,-50%); position: fixed; z-index: 2000; background-color: white; font: 18px Microsoft Yahei;}
 #up_video p{margin-bottom: 20px;}
 #up_video .close_button{position: absolute; top: 10px; right: 10px;}
 
@@ -24,10 +24,12 @@
 #banner #banner_nav{display:flex;align-items:center; position:relative; width: 1205px; font: 12px Simsun; line-height: 28px; margin: 30px auto; height: 30px; vertical-align: middle;}
 .edu{font: 28px Gill Sans MT;}
 #banner #banner_nav .edu span{color:#39A030; font-weight: bold;}
-#banner #banner_nav .guanzhu a{display: inline-block; margin: auto 30px; font:12px/21px Simsun; color: white; width: 54px; height: 21px; background-color: #21A557; text-align: center;}
-#banner #banner_nav .alreadyguanzhu{display: none; border: 1px solid #efefef; line-height: 12px; font-family: Microsoft Yahei; margin: 0 30px;padding: 0 5px;}
-#banner #banner_nav .alreadyguanzhu span{display: inline-block; font:12px/21px Simsun;text-align: center;}
-#banner #banner_nav .alreadyguanzhu a{color: #ccc}
+#banner #banner_nav .guanzhu a{display: inline-block; margin: auto 30px; font:12px/21px Simsun; color: white; width: 54px; height: 21px; background-color: #21A557; text-align: center; border-radius: 3px;}
+#banner #banner_nav .alreadyguanzhu{border-radius: 3px; display: none; border: 1px solid #efefef; line-height: 12px; font-family: Microsoft Yahei; margin: 0 30px;padding: 0 5px;}
+#banner #banner_nav .alreadyguanzhu span{color:#999;display: inline-block; font:12px/21px Simsun;text-align: center; margin-left: 5px;}
+#banner #banner_nav .alreadyguanzhu span:first-child{color: #333}
+#banner #banner_nav .alreadyguanzhu span:last-child a{color: #999}
+#banner #banner_nav .alreadyguanzhu span:last-child a:hover {color:#21A557;text-decoration: underline; }
 
 #banner #banner_nav .threeproduct{display: inline-block; position: absolute;right: 0;}
 #banner #banner_nav .threeproduct ul li{display: inline-block; font: 16px Microsoft Yahei; margin-left: 55px;}
@@ -57,17 +59,21 @@
 /*course样式*/
 #course{width: 1205px; margin: 80px auto; position: relative;}
 /*course主栏*/
-#course #main{width: 965px; position: relative; float: left; margin-right: 20px;}
+#course #main{width: 965px; position: relative; float: left; }
 #course #main #tab .main_course_tab_checked {margin-right: 5px; cursor: pointer; color:white;display: inline-block;width:200px; height: 50px; font: 20px/50px Microsoft Yahei;box-shadow: 1px 3px 2px #D4D3D3; background-color: #39A030; text-align: center; float: left;}
 #course #main #tab .main_course_tab{margin-right: 5px; cursor: pointer; color:black;display: inline-block;width:200px; height: 50px; font: 20px/50px Microsoft Yahei;box-shadow: 1px 3px 2px #D4D3D3; background-color: white; text-align: center; float: left;}
 
 #course #main #tab:after{content: '.';display: block;clear: both;visibility: hidden;height: 0;overflow: none;}
 #course #main #courseList ul{position: relative;top: 30px;}
-#course #main #courseList .main_course{width: 24%; margin-right: 0.8%; margin-bottom: 10px;box-sizing:border-box;border: 1px solid #f1f1f1; padding:1px; float: left; box-shadow: 0px 1px 4px #cecece;}
-#course #main #courseList .main_course .main_course_pic{width: 100%; height: 122px;}
+#course #main #courseList .main_course{overflow: hidden; width: 23%; margin-right: 2%; margin-bottom: 15px;box-sizing:border-box;border: 1px solid #f1f1f1; padding:1px; float: left; box-shadow: 0px 1px 4px #cecece;}
+#course #main #courseList .main_course:after{content:'.';display: block;clear: both;visibility: hidden;height: 0;overflow: none; }
+#course #main #courseList .main_course_hover:after{content:'.';display: block;clear: both;visibility: hidden;height: 0;overflow: none; }
+#course #main #courseList .main_course .main_course_pic{width: 219px; height: 122px;}
 #course #main #courseList .main_course p{margin-top: 10px;margin-left: 2px;}
 #course #main #courseList .main_course:hover{color: #39a030;box-shadow: 0px 1px 4px black;}
-#course #main #courseList .main_course .course_intro{font: 12px Microsoft Yahei; overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
+#course #main #courseList .main_course_hover{overflow: hidden;height: 234px; margin-right: 2%; width: 48%;box-sizing:border-box;border: 1px solid #f1f1f1; padding:1px; z-index: 10000; float: left; box-shadow: 0px 1px 4px #cecece;}
+#course #main #courseList .main_course_hover+li{display: none;overflow: hidden; }
+#course #main #courseList .main_course .course_intro{overflow:hidden;font: 12px Microsoft Yahei; overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 #course #main #courseList .main_course .course_teacher{color: #999;}
 #course #main #courseList .main_course .course_follower{background: url(images/usericon.png) no-repeat 1px; padding-left: 16px; border: 1px solid #f1f1f1; display: inline-block; border-radius: 2px;color: #999;vertical-align: middle;text-align: center;}
 #course #main #courseList .main_course .course_price{color: #FF3F00; margin-bottom: 12px;}
@@ -85,13 +91,14 @@
 #course #side #side_jigouIntro{height: 230px;border: 1px solid #D4D3D3; box-shadow: 1px 2px 2px #cecece; border-top: none; margin-bottom: 20px;}
 #course #side span{display:block; border-bottom: 1px solid #D4D3D3;  font: 16px/55px Microsoft Yahei; height: 55px; padding-left: 22px; color: #333;}
 #course #side #side_jigouIntro #side_jigouIntro_video{padding-left: 22px;}
+#course #side #side_jigouIntro #side_jigouIntro_video video{cursor: pointer;}
 #course #side #side_jigouIntro #side_jigouIntro_video p{margin: 21px 0 9px; font-size: 14px; color:#666; }
 #course #side #side_courses ul li{margin:20px;}
 #course #side #side_courses .side_course{width: 50px; height: 50px; float: left;}
 #course #side #side_courses .side_course_title{margin-left: 60px;font: 14px Microsoft Yahei; margin-bottom: 10px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 #course #side #side_courses p:last-child{margin-left: 60px;font-size: 12px; color: #999;background: url(images/usericon.png) no-repeat 1px; padding-left: 16px;}
 
-#course #side #side_hotlist{height: 720px;border: 1px solid #D4D3D3; border-top: none;  box-shadow: 1px 2px 2px #cecece; margin-bottom: 5px;}
+#course #side #side_hotlist{overflow:hidden;height: 720px;border: 1px solid #D4D3D3; border-top: none;  box-shadow: 1px 2px 2px #cecece; margin-bottom: 5px;}
 
 /*footer*/
 #footer{margin-top:200px;width: 100%;background-color: #2C3339; color: #999; font: 14.58px Microsoft Yahei; position: relative; bottom: 0;}
