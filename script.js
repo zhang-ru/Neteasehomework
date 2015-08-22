@@ -200,7 +200,7 @@ function ajax_success(data){
                 _follower.style.cssText='background: url(images/usericon.png) no-repeat 1px; padding-left: 16px; font-size:12px; color:#666; margin:0 0 15px 239px;';
                 _provider.style.cssText='font-size:12px; color:#666; margin:0 0 5px 239px;';
                 _categoryName.style.cssText='font-size:12px; color:#666; margin:0 0 5px 239px;';
-                _description.style.cssText='clear:both;font-size:14px; color:#666; padding:20px 20px 20px; text-indent:2em; position:relative; bottom:0;overflow: hidden;text-overflow:ellipsis;';
+                _description.style.cssText='clear:both;font:14px/1.5 Microsoft Yahei; color:#666; padding:20px 20px 20px; text-indent:2em; position:relative; bottom:0;overflow: hidden;text-overflow:ellipsis;';
                 _categoryName.style.display='block';
 
 
