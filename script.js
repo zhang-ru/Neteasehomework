@@ -139,9 +139,11 @@ function ajax_success(data){
 
             var _img = document.createElement("img");
             var _description = document.createElement("p");
-            var _name = document.createElement("p");
+            var _provider = document.createElement("p");
             var _follower = document.createElement("p");
             var _price = document.createElement("p");
+            var _categoryName = document.createElement("p");
+            var _name = document.createElement("p");
 
             _img.setAttribute("class", "main_course_pic");
             _img.setAttribute("src", _data.list[i].middlePhotoUrl);
@@ -149,8 +151,8 @@ function ajax_success(data){
             _description.setAttribute("class","course_intro");
             _description.innerHTML=_data.list[i].description;
 
-            _name.setAttribute("class", "course_teacher");
-            _name.innerHTML=_data.list[i].provider;
+            _provider.setAttribute("class", "course_teacher");
+            _provider.innerHTML=_data.list[i].provider;
 
             _follower.setAttribute("class","course_follower");
             _follower.innerHTML=_data.list[i].learnerCount;
@@ -158,18 +160,81 @@ function ajax_success(data){
             _price.setAttribute("class","course_price");
             _price.innerHTML='￥'+_data.list[i].price;
 
+            _name.innerHTML=_data.list[i].name;
+
+            _categoryName.innerHTML="分类: "+_data.list[i].categoryName;
+
             oLi.appendChild(_img);
             oLi.appendChild(_description);
-            oLi.appendChild(_name);
+            oLi.appendChild(_provider);
             oLi.appendChild(_follower);
             oLi.appendChild(_price);
-            //xuanfu
+            oLi.appendChild(_name);
+            oLi.appendChild(_categoryName);
+           _name.style.display='none';
+           _categoryName.style.display='none';
+            //鼠标悬浮
             oLi.onmouseover=function(){
+                var _img = this.getElementsByTagName("img")[0];
+                var _description = this.getElementsByTagName("p")[0];
+                var _provider = this.getElementsByTagName("p")[1];
+                var _follower = this.getElementsByTagName("p")[2];
+                var _price =this.getElementsByTagName("p")[3]; 
+                var _name =this.getElementsByTagName("p")[4]; 
+                var _categoryName =this.getElementsByTagName("p")[5]; 
+                var _usericon=document.createElement("img");
+
                 this.setAttribute('class','main_course_hover');
+                this.innerHTML='';
+                this.appendChild(_img);
+                this.appendChild(_name);
+                this.appendChild(_follower);
+                this.appendChild(_provider);
+                this.appendChild(_categoryName);
+                this.appendChild(_description);
+                this.appendChild(_price);
+
+                _price.style.display='none';
+                _img.style.cssText='float:left;width: 219px; height: 122px;';
+                _name.style.cssText='display:block; font:18px Microsoft Yahei; margin:15px 15px 15px 239px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;';
+                _follower.style.cssText='background: url(images/usericon.png) no-repeat 1px; padding-left: 16px; font-size:12px; color:#666; margin:0 0 15px 239px;';
+                _provider.style.cssText='font-size:12px; color:#666; margin:0 0 5px 239px;';
+                _categoryName.style.cssText='font-size:12px; color:#666; margin:0 0 5px 239px;';
+                _description.style.cssText='clear:both;font-size:14px; color:#666; padding:20px 20px 20px; text-indent:2em; position:relative; bottom:0;overflow: hidden;text-overflow:ellipsis;';
+                _categoryName.style.display='block';
+
+
+                
+
             }
+            //鼠标移出
             oLi.onmouseout=function(){
                 this.setAttribute('class','main_course');
-            }
+                var _img = this.getElementsByTagName("img")[0];
+                var _description = this.getElementsByTagName("p")[4];
+                var _provider = this.getElementsByTagName("p")[2];
+                var _follower = this.getElementsByTagName("p")[1];
+                var _price =this.getElementsByTagName("p")[5]; 
+                var _name = this.getElementsByTagName("p")[0];
+                var _categoryName =this.getElementsByTagName("p")[3]; 
+
+                 _img.style.cssText='';
+                _name.style.cssText='';
+                _follower.style.cssText='';
+                _provider.style.cssText='';
+                _categoryName.style.cssText='';
+                _description.style.cssText='';
+                this.appendChild(_img);
+                this.appendChild(_description);
+                this.appendChild(_provider);
+                this.appendChild(_follower);
+                this.appendChild(_price);
+                this.appendChild(_name);
+                this.appendChild(_categoryName);
+                _name.style.display='none';
+                _categoryName.style.display='none';
+                _price.style.display='block';
+            }   
             
         }
 }
