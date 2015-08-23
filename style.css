@@ -20,7 +20,7 @@
 /*banner样式*/
 #banner{width: 100%;}
 
-
+/*关注与不再关注*/
 #banner #banner_nav{display:flex;align-items:center; position:relative; width: 1205px; font: 12px Simsun; line-height: 28px; margin: 30px auto; height: 30px; vertical-align: middle;}
 .edu{font: 28px Gill Sans MT;}
 #banner #banner_nav .edu span{color:#39A030; font-weight: bold;}
@@ -31,18 +31,21 @@
 #banner #banner_nav .alreadyguanzhu span:last-child a{color: #999}
 #banner #banner_nav .alreadyguanzhu span:last-child a:hover {color:#21A557;text-decoration: underline; }
 
+/*三个产品介绍*/
 #banner #banner_nav .threeproduct{display: inline-block; position: absolute;right: 0;}
 #banner #banner_nav .threeproduct ul li{display: inline-block; font: 16px Microsoft Yahei; margin-left: 55px;}
 #banner #banner_nav .threeproduct ul li a:hover{color: #39a030;}
 
-#banner #banner_pic{position: relative;z-index: 1; height: 430px;}
-#banner #banner_pic .bannerpic li{position: absolute; z-index: -9999;}
+/*轮播图*/
+#banner #banner_pic{ position: relative;height: 418px; width: 100%; overflow: hidden; margin-bottom: 60px;}
+#banner #banner_pic .bannerpic{position: absolute;}
+#banner #banner_pic .bannerpic li{width:20%;float: left; }
 #banner #banner_pic ul li img{width: 100%;}
-#banner #banner_pic .quanquan{position: absolute;bottom: 40px;z-index: 10000; left: 50%; width: 84px; margin-left: -42px;}
-#banner #banner_pic .quanquan li{width:12px; height:12px;margin-right: 12px; display: inline-block;background-color: white; z-index: 2; border-radius: 50%;}
+#banner #banner_pic .quanquan{position: absolute;bottom: 40px;z-index: 10000;  left: 50%; width: 84px; margin-left: -42px;}
+#banner #banner_pic .quanquan li{width:12px; height:12px;margin-right: 12px;cursor: pointer; display: inline-block;background-color: white; z-index: 2; border-radius: 50%;}
 
-
-#banner #banner_threeproducts{width: 1205px; margin: 30px auto; position: relative;}
+/*课程详情*/
+#banner #banner_threeproducts{width: 1205px; margin: 30px auto 60px; position: relative;}
 #banner #banner_threeproducts ul li{display: inline-block;width: 399px; vertical-align: top; position: relative;}
 #banner #banner_threeproducts ul li img,#banner #banner_threeproducts ul li div{display: inline-block;}
 #banner #banner_threeproducts ul li img{position: absolute;top: 0;}
@@ -52,6 +55,7 @@
 #banner #banner_threeproducts ul li div p:last-child a{color: #39a030;}
 #banner_threeproducts ul li div p:last-child a:hover{text-decoration: underline;}
 
+/*工作环境图片*/
 #banner #banner_workEnvi{width: 100%; overflow: hidden;}
 #banner #banner_workEnvi ul li{display: inline-block;width:19.62%;}
 #banner #banner_workEnvi ul li img{width: 100%;}
@@ -63,15 +67,15 @@
 #course #main #tab .main_course_tab_checked {margin-right: 5px; cursor: pointer; color:white;display: inline-block;width:200px; height: 50px; font: 20px/50px Microsoft Yahei;box-shadow: 1px 3px 2px #D4D3D3; background-color: #39A030; text-align: center; float: left;}
 #course #main #tab .main_course_tab{margin-right: 5px; cursor: pointer; color:black;display: inline-block;width:200px; height: 50px; font: 20px/50px Microsoft Yahei;box-shadow: 1px 3px 2px #D4D3D3; background-color: white; text-align: center; float: left;}
 
+/*课程列表样式*/
 #course #main #tab:after{content: '.';display: block;clear: both;visibility: hidden;height: 0;overflow: hidden;}
 #course #main #courseList ul{position: relative;top: 30px;}
-#course #main #courseList .main_course{position: relative; float: left;  width: 23%; margin-right: 2%;height: 234px; margin-bottom: 20px;box-sizing:border-box;border: 1px solid #f1f1f1; padding:1px; display: inline-block; box-shadow: 0px 1px 4px #cecece;}
+#course #main #courseList .main_course{position: relative; float: left;  width: 23%; margin-right: 2%;height: 234px; margin-bottom: 20px;box-sizing:border-box;border: 1px solid #f1f1f1; padding:1px; display: inline-block; }
 #course #main #courseList .main_course:after{content:'.';display: block;clear: both;visibility: hidden;height: 0;overflow: hidden; }
 #course #main #courseList .main_course_hover:after{content:'.';display: block;clear: both;visibility: hidden;height: 0;overflow: hidden; }
 #course #main #courseList .main_course .main_course_pic,#course #main #courseList .main_course:hover .main_course_pic{width: 219px; height: 122px;}
 #course #main #courseList .main_course p{margin-top: 10px;margin-left: 2px;}
 #course #main #courseList .main_course:hover{color: #39a030;box-shadow: 0px 1px 4px black;}
-
 #course #main #courseList .main_course_hover{position: relative; float: left;overflow: hidden;height: 234px;margin-bottom: 20px; margin-right: 2%; width: 48%;box-sizing:border-box;border: 1px solid #f1f1f1; padding:1px; box-shadow: 0px 1px 4px #cecece;}
 #course #main #courseList .main_course_hover+li{display: none;overflow: hidden; }
 #course #main #courseList .main_course .course_intro{overflow:hidden;font: 12px Microsoft Yahei; overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
@@ -99,7 +103,6 @@
 #course #side #side_courses .side_course{width: 50px; height: 50px; float: left;}
 #course #side #side_courses .side_course_title{margin-left: 60px;font: 14px Microsoft Yahei; margin-bottom: 10px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 #course #side #side_courses p:last-child{margin-left: 60px;font-size: 12px; color: #999;background: url(images/usericon.png) no-repeat 1px; padding-left: 16px;}
-
 #course #side #side_hotlist{overflow:hidden;height: 720px;border: 1px solid #D4D3D3; border-top: none;  box-shadow: 1px 2px 2px #cecece; margin-bottom: 5px;}
 
 /*footer*/

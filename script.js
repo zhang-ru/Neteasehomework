@@ -41,6 +41,7 @@
     }
 //事件兼容性函数
 var EventUtil = {
+    //绑定事件
     addHandler: function(element, type, handler){
         if (element.addEventListener){
             element.addEventListener(type, handler, false);
@@ -50,6 +51,7 @@ var EventUtil = {
             element["on" + type] = handler;
         }
     },
+    //移除事件
     removeHandler: function(element, type, handler){
         if (element.removeEventListener){
                 element.removeEventListener(type, handler, false);
@@ -136,7 +138,7 @@ function ajax_success(data){
             var oLi = document.createElement("li");
             oLi.setAttribute("class","main_course");
             oUl.appendChild(oLi);
-
+            //创建子元素
             var _img = document.createElement("img");
             var _description = document.createElement("p");
             var _provider = document.createElement("p");
@@ -145,6 +147,7 @@ function ajax_success(data){
             var _categoryName = document.createElement("p");
             var _name = document.createElement("p");
 
+            //设置属性
             _img.setAttribute("class", "main_course_pic");
             _img.setAttribute("src", _data.list[i].middlePhotoUrl);
 
@@ -173,7 +176,7 @@ function ajax_success(data){
             oLi.appendChild(_categoryName);
            _name.style.display='none';
            _categoryName.style.display='none';
-            //鼠标悬浮
+            //课程鼠标悬浮
             oLi.onmouseover=function(){
                 var _img = this.getElementsByTagName("img")[0];
                 var _description = this.getElementsByTagName("p")[0];
@@ -200,7 +203,7 @@ function ajax_success(data){
                 _follower.style.cssText='background: url(images/usericon.png) no-repeat 1px; padding-left: 16px; font-size:12px; color:#666; margin:0 0 15px 239px;';
                 _provider.style.cssText='font-size:12px; color:#666; margin:0 0 5px 239px;';
                 _categoryName.style.cssText='font-size:12px; color:#666; margin:0 0 5px 239px;';
-                _description.style.cssText='clear:both;font:14px/1.5 Microsoft Yahei; color:#666; padding:20px 20px 20px; text-indent:2em; position:relative; bottom:0;overflow: hidden;text-overflow:ellipsis;';
+                _description.style.cssText='clear:both;font:14px/1.5 Microsoft Yahei; height:40px; color:#666; padding:20px 20px 20px; text-indent:2em; position:relative; bottom:0;overflow: hidden;text-overflow:ellipsis;';
                 _categoryName.style.display='block';
 
 
@@ -238,7 +241,7 @@ function ajax_success(data){
             
         }
 }
-//课程列表ajax
+//载入课程列表ajax
 ajax({
     method : 'get',
     url : 'http://study.163.com/webDev/couresByCategory.htm',
@@ -250,14 +253,14 @@ ajax({
     success : ajax_success,
     async : true
 });
-//热门推荐ajax
+//载入热门推荐ajax函数
 function hot_list_fun(data){
         var _data= eval(data);
         var oUl = document.getElementById("side_courselist_ajax");
         var timer=0;
             setInterval(function(){
                 oUl.innerHTML='';
-                
+                    //5秒滚动一门课程
                     for(var i=timer+0;i<10+timer && i<20;i++){
                         var oLi = document.createElement("li");
                         
@@ -285,6 +288,7 @@ function hot_list_fun(data){
 
         
 }
+//页面加载后载入热门课程列表
 ajax({
     method : 'get',
     url : 'http://study.163.com/webDev/hotcouresByCategory.htm',
@@ -412,6 +416,7 @@ var backtopage1=function(){
 //tab 切换
 var main_course_tab1=document.getElementById('main_course_tab1');
 var main_course_tab2=document.getElementById('main_course_tab2');
+//tab2切换绑定函数
 EventUtil.addHandler(main_course_tab2,'click',function(){
     main_course_tab1.setAttribute('class','main_course_tab');
     main_course_tab2.setAttribute('class','main_course_tab_checked');
@@ -428,6 +433,7 @@ EventUtil.addHandler(main_course_tab2,'click',function(){
     });
     backtopage1();
 });
+//tab1切换绑定函数
 EventUtil.addHandler(main_course_tab1,'click',function(){
     main_course_tab2.setAttribute('class','main_course_tab');
     main_course_tab1.setAttribute('class','main_course_tab_checked');
@@ -482,6 +488,7 @@ var page_type = function(){
  //判断当前页面并设置左右翻页键
  var direct_left=document.getElementsByClassName('direct_left')[0];
  var direct_right=document.getElementsByClassName('direct_right')[0];
+ //左翻页键函数
  direct_left.onclick=function(){
     var current_active_page=document.getElementsByClassName('currentpage')[0].innerHTML;
 
@@ -501,7 +508,7 @@ var page_type = function(){
         page_aLi[current_active_page-1].setAttribute('class','currentpage');
     }
  }
- 
+ //右翻页键函数
  direct_right.onclick=function(){
     var current_active_page=document.getElementsByClassName('currentpage')[0].innerHTML;
 
@@ -529,8 +536,41 @@ EventUtil.addHandler(side_jigouIntro_video,'click',function(){
     mask.style.display='block';
     up_video.style.display="block";
 });
+//视频播放关闭按钮事件
 var close_video=up_video.getElementsByClassName('close_button')[0];
 EventUtil.addHandler(close_video,'click',function(){
     mask.style.display='none';
     up_video.style.display='none';
 })
+
+//轮播图
+//获取元素
+var banner_pic=document.getElementById('banner_pic');
+var banner_pic_list=banner_pic.getElementsByClassName('bannerpic')[0];
+var banner_pics=banner_pic_list.getElementsByTagName('img');
+var browser_width=parseInt(document.documentElement.clientWidth);//获取窗口宽度
+banner_pic_list.style.width=browser_width*5+'px';
+banner_pic_list.style.left=-browser_width+'px';
+for(var i=0;i<banner_pics.length;i++){banner_pics[i].style.width= parseInt(document.documentElement.clientWidth)+'px'};
+// banner_pic_list.style.left='-100%' ;
+console.log(browser_width);
+console.log(banner_pic_list.offsetLeft);
+//动画函数
+function move(){
+    if(parseInt(banner_pic_list.offsetLeft)<-browser_width*3){
+        banner_pic_list.style.left=-browser_width+'px';
+    }else{
+       
+        banner_pic_list.style.left= parseInt(banner_pic_list.offsetLeft)-document.documentElement.clientWidth+'px';
+    //debugger;
+    }
+
+}
+var timer=setInterval(move,500);
+banner_pic_list.onmouseover=function(){
+    clearInterval(timer);
+}
+banner_pic_list.onmouseout=function(){
+    clearInterval(timer);
+    timer =setInterval(move,500);
+}
