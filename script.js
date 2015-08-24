@@ -546,8 +546,8 @@ EventUtil.addHandler(close_video,'click',function(){
 //轮播图
 //获取元素
 var banner_pic=document.getElementById('banner_pic');
-var banner_pic_list=banner_pic.getElementsByClassName('bannerpic')[0];
-var banner_pics=banner_pic_list.getElementsByTagName('img');
+var banner_pic_list=banner_pic.getElementsByClassName('bannerpic')[0];//ul
+var banner_pic_lists=banner_pic_list.getElementsByTagName('li');
 var browser_width=parseInt(document.documentElement.clientWidth);//获取窗口宽度
 window.onload=function(){banner_pic.style.height=browser_width*0.2785+'px';} 
 window.onresize=function(){
@@ -556,21 +556,14 @@ window.onresize=function(){
 
 
 //动画函数
-// function move(){
-//     if(parseInt(banner_pic_list.offsetLeft)<-browser_width*3){
-//         banner_pic_list.style.left=-browser_width+'px';
-//     }else{
-       
-//         banner_pic_list.style.left= parseInt(banner_pic_list.offsetLeft)-document.documentElement.clientWidth+'px';
-//     //debugger;
-//     }
+var num_count=0;
+var timer;
+//function move(){
+    timer=setInterval(function(){
+        banner_pic_lists[num_count%3].style.opacity=0;
+        banner_pic_lists[(num_count+1)%3].style.opacity=1;
+        num_count++;
+    },5000)
+//    
 
-// }
-// var timer=setInterval(move,500);
-// banner_pic_list.onmouseover=function(){
-//     clearInterval(timer);
-// }
-// banner_pic_list.onmouseout=function(){
-//     clearInterval(timer);
-//     timer =setInterval(move,500);
-// }
+
