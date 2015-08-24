@@ -549,28 +549,28 @@ var banner_pic=document.getElementById('banner_pic');
 var banner_pic_list=banner_pic.getElementsByClassName('bannerpic')[0];
 var banner_pics=banner_pic_list.getElementsByTagName('img');
 var browser_width=parseInt(document.documentElement.clientWidth);//获取窗口宽度
-banner_pic_list.style.width=browser_width*5+'px';
-banner_pic_list.style.left=-browser_width+'px';
-for(var i=0;i<banner_pics.length;i++){banner_pics[i].style.width= parseInt(document.documentElement.clientWidth)+'px'};
-// banner_pic_list.style.left='-100%' ;
-console.log(browser_width);
-console.log(banner_pic_list.offsetLeft);
-//动画函数
-function move(){
-    if(parseInt(banner_pic_list.offsetLeft)<-browser_width*3){
-        banner_pic_list.style.left=-browser_width+'px';
-    }else{
-       
-        banner_pic_list.style.left= parseInt(banner_pic_list.offsetLeft)-document.documentElement.clientWidth+'px';
-    //debugger;
-    }
+window.onload=function(){banner_pic.style.height=browser_width*0.2785+'px';} 
+window.onresize=function(){
+    browser_width=parseInt(document.documentElement.clientWidth);
+    banner_pic.style.height=browser_width*0.2785+'px'; }
 
-}
-var timer=setInterval(move,500);
-banner_pic_list.onmouseover=function(){
-    clearInterval(timer);
-}
-banner_pic_list.onmouseout=function(){
-    clearInterval(timer);
-    timer =setInterval(move,500);
-}
+
+//动画函数
+// function move(){
+//     if(parseInt(banner_pic_list.offsetLeft)<-browser_width*3){
+//         banner_pic_list.style.left=-browser_width+'px';
+//     }else{
+       
+//         banner_pic_list.style.left= parseInt(banner_pic_list.offsetLeft)-document.documentElement.clientWidth+'px';
+//     //debugger;
+//     }
+
+// }
+// var timer=setInterval(move,500);
+// banner_pic_list.onmouseover=function(){
+//     clearInterval(timer);
+// }
+// banner_pic_list.onmouseout=function(){
+//     clearInterval(timer);
+//     timer =setInterval(move,500);
+// }
