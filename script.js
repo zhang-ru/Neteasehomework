@@ -177,7 +177,7 @@ function ajax_success(data){
            _name.style.display='none';
            _categoryName.style.display='none';
             //课程鼠标悬浮
-            oLi.onmouseover=function(){
+            oLi.onmouseover = function(){
                 var _img = this.getElementsByTagName("img")[0];
                 var _description = this.getElementsByTagName("p")[0];
                 var _provider = this.getElementsByTagName("p")[1];
@@ -188,7 +188,7 @@ function ajax_success(data){
                 var _usericon=document.createElement("img");
 
                 this.setAttribute('class','main_course_hover');
-                this.innerHTML='';
+               // this.innerHTML='';
                 this.appendChild(_img);
                 this.appendChild(_name);
                 this.appendChild(_follower);
@@ -205,11 +205,7 @@ function ajax_success(data){
                 _categoryName.style.cssText='font-size:12px; color:#666; margin:0 0 5px 239px;';
                 _description.style.cssText='clear:both;font:14px/1.5 Microsoft Yahei; height:40px; color:#666; padding:20px 20px 20px; text-indent:2em; position:relative; bottom:0;overflow: hidden;text-overflow:ellipsis;';
                 _categoryName.style.display='block';
-
-
-                
-
-            }
+            };
             //鼠标移出
             oLi.onmouseout=function(){
                 this.setAttribute('class','main_course');
@@ -559,6 +555,7 @@ var banner_pic_lists=banner_pic_list.getElementsByTagName('li');
 var browser_width=parseInt(document.documentElement.clientWidth);//获取窗口宽度
 var quanquan_list=banner_pic.getElementsByClassName('quanquan')[0].getElementsByTagName('li');
 var current_banner;
+var timer2;
 
     //动画函数
     var num_count=0;
@@ -585,12 +582,13 @@ var current_banner;
     //鼠标移入停止自动滚动 
     banner_pic.onmouseover=function(){
         clearInterval(timer);
+        clearInterval(timer2);
         current_banner=getBannerPage();//保存当前页面
     }
     //鼠标移除重启自动滚动
     banner_pic.onmouseout=function(){
         num_count=current_banner;
-        timer=setInterval(function(){
+        timer2=setInterval(function(){
             banner_pic_lists[num_count%3].style.opacity=0;
             banner_pic_lists[(num_count+1)%3].style.opacity=1;
             //自动播放时圈圈自动变化

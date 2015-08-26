@@ -76,13 +76,12 @@
 /*课程列表样式*/
 #course #main #tab:after{content: '.';display: block;clear: both;visibility: hidden;height: 0;overflow: hidden;}
 #course #main #courseList ul{position: relative;top: 30px;}
-#course #main #courseList .main_course{position: relative; float: left;  width: 23%; margin-right: 2%;height: 234px; margin-bottom: 20px;box-sizing:border-box;border: 1px solid #f1f1f1; padding:1px; display: inline-block; }
+#course #main #courseList .main_course{display: inline-block; position: relative; float: left;  width: 23%; margin-right: 2%;height: 234px; margin-bottom: 20px;box-sizing:border-box;border: 1px solid #f1f1f1; padding:1px; display: inline-block; }
 #course #main #courseList .main_course:after{content:'.';display: block;clear: both;visibility: hidden;height: 0;overflow: hidden; }
 #course #main #courseList .main_course_hover:after{content:'.';display: block;clear: both;visibility: hidden;height: 0;overflow: hidden; }
 #course #main #courseList .main_course .main_course_pic,#course #main #courseList .main_course:hover .main_course_pic{width: 219px; height: 122px;}
 #course #main #courseList .main_course p{margin-top: 10px;margin-left: 2px;}
-#course #main #courseList .main_course:hover{color: #39a030;box-shadow: 0px 1px 4px black;}
-#course #main #courseList .main_course_hover{position: relative; float: left;overflow: hidden;height: 234px;margin-bottom: 20px; margin-right: 2%; width: 48%;box-sizing:border-box;border: 1px solid #f1f1f1; padding:1px; box-shadow: 0px 1px 4px #cecece;}
+#course #main #courseList .main_course_hover{display:inline-block; position: relative; float: left;overflow: hidden;height: 234px;margin-bottom: 20px; margin-right: 2%; width: 48%;box-sizing:border-box;border: 1px solid #f1f1f1; padding:1px; box-shadow: 0px 1px 4px #cecece;}
 #course #main #courseList .main_course_hover+li{display: none;overflow: hidden; }
 #course #main #courseList .main_course .course_intro{overflow:hidden;font: 12px Microsoft Yahei; overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 #course #main #courseList .main_course .course_teacher{color: #999;}
