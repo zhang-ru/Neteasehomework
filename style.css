@@ -48,7 +48,6 @@
 #banner #banner_pic ul li img{ width: 100%;}
 #banner #banner_pic .bannerpic li:first-of-type{opacity: 1;}
 #banner #banner_pic .quanquan{position: absolute;bottom: 40px;z-index: 100;  left: 50%; width: 84px; margin-left: -42px;}
-#banner #banner_pic .quanquan{position: absolute;bottom: 40px;z-index: 10000;  left: 50%; width: 84px; margin-left: -42px;}
 #banner #banner_pic .quanquan li{width:12px; height:12px;margin-right: 12px;cursor: pointer; display: inline-block;background-color: white; z-index: 2; border-radius: 50%;}
 #banner #banner_pic .quanquan .checked{background-color: black;}
 /*课程详情*/

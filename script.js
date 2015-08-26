@@ -553,11 +553,12 @@ var quanquan_list=banner_pic.getElementsByClassName('quanquan')[0].getElementsBy
 var current_banner;
 
 window.onload=function(){
-    banner_pic.style.height=browser_width*0.2785+'px';
+    banner_pic.style.height=browser_width*0.2785+'px';//调整轮播图大小以适应屏幕
 } 
 window.onresize=function(){
     browser_width=parseInt(document.documentElement.clientWidth);
-    banner_pic.style.height=browser_width*0.2785+'px'; }
+    banner_pic.style.height=browser_width*0.2785+'px';
+}
 
 //动画函数
     var num_count=0;
@@ -618,4 +619,4 @@ window.onresize=function(){
             }
         })
     }
-} 
+ 
