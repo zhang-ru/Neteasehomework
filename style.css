@@ -2,11 +2,11 @@
 /*遮罩*/
 .mask{display:none;position: fixed;top: 0;bottom: 0;height: 100%;width: 100%;z-index: 999; background-color: rgba(0,0,0,0.5)}
 .clearfix:after{content:'.';display: block;clear: both;visibility: hidden;height: 0;overflow: none; }
-#up_video{display: none;left: 50%;top: 50%; width: 890px; height: 675px; padding: 30px 30px 40px;transform:translate(-50%,-50%); position: fixed; z-index: 2000; background-color: white; font: 18px Microsoft Yahei;}
+#up_video{z-index: 1000; display: none;left: 50%;top: 50%; width: 890px; height: 675px; padding: 30px 30px 40px;transform:translate(-50%,-50%); position: fixed; z-index: 2000; background-color: white; font: 18px Microsoft Yahei;}
 #up_video p{margin-bottom: 20px;}
 #up_video .close_button{position: absolute; top: 10px; right: 10px;}
 
-#login_box{display: none; position:fixed; transform:translate(-50%,-50%); top:50%; left:50%; z-index: 2000; width: 297px;height: 218px; background-color: white; padding: 30px 50px 40px 40px; font: 18px Microsoft Yahei;}
+#login_box{z-index: 1000; display: none; position:fixed; transform:translate(-50%,-50%); top:50%; left:50%; z-index: 2000; width: 297px;height: 218px; background-color: white; padding: 30px 50px 40px 40px; font: 18px Microsoft Yahei;}
 #login_box #login_form input{display: block;font: 16px Microsoft Yahei; text-indent: 0.5em; width: 295px; height: 45px; margin-top:20px; box-sizing:border-box; border:1px solid #DFDFDF; box-shadow: -1px -1px 2px #F1F1F1 inset; }
 #login_box #login_form button{display: block; border: 1px solid #2AB050; box-shadow: 1px 1px #D5E3DA; width: 295px; height: 45px; margin-top: 30px; font: 16px Microsoft Yahei; color: #fff; text-align: center; background: linear-gradient(#24AC47,#13912B)}
 #login_box .close_button{position: absolute; top: 10px; right: 10px;}
@@ -41,7 +41,7 @@
 #banner #banner_pic .bannerpic li{position:absolute; width:100%; opacity: 0;}
 #banner #banner_pic ul li img{ width: 100%;}
 #banner #banner_pic .bannerpic li:first-of-type{opacity: 1;}
-#banner #banner_pic .quanquan{position: absolute;bottom: 40px;z-index: 10000;  left: 50%; width: 84px; margin-left: -42px;}
+#banner #banner_pic .quanquan{position: absolute;bottom: 40px;z-index: 100;  left: 50%; width: 84px; margin-left: -42px;}
 #banner #banner_pic .quanquan li{width:12px; height:12px;margin-right: 12px;cursor: pointer; display: inline-block;background-color: white; z-index: 2; border-radius: 50%;}
 #banner #banner_pic .quanquan .checked{background-color: black;}
 /*课程详情*/
