@@ -560,7 +560,7 @@ window.onresize=function(){
     banner_pic.style.height=browser_width*0.2785+'px'; }
 
 //动画函数
-var num_count=0;
+    var num_count=0;
     var timer=setInterval(function(){
 
             banner_pic_lists[num_count%3].style.opacity=0;
@@ -618,3 +618,4 @@ var num_count=0;
             }
         })
     }
+} 
