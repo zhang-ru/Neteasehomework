@@ -553,70 +553,70 @@ var quanquan_list=banner_pic.getElementsByClassName('quanquan')[0].getElementsBy
 var current_banner;
 
 window.onload=function(){
-    banner_pic.style.height=browser_width*0.2785+'px';//调整轮播图大小以适应屏幕
+    banner_pic.style.height=browser_width*0.2785+'px';//重置banner高度以适应屏幕
+ 
 } 
 window.onresize=function(){
     browser_width=parseInt(document.documentElement.clientWidth);
-    banner_pic.style.height=browser_width*0.2785+'px';
-}
+    banner_pic.style.height=browser_width*0.2785+'px'; }
+
 
 //动画函数
-    var num_count=0;
-    var timer=setInterval(function(){
+var num_count=0;
+var timer=setInterval(function(){
 
-            banner_pic_lists[num_count%3].style.opacity=0;
-            banner_pic_lists[(num_count+1)%3].style.opacity=1;
+        banner_pic_lists[num_count%3].style.opacity=0;
+        banner_pic_lists[(num_count+1)%3].style.opacity=1;
 
-            //自动播放时圈圈自动变化
-            for(var i=0;i<3;i++){
-                quanquan_list[i].removeAttribute('class');
-                if((num_count+1)%3 ==i){quanquan_list[i].setAttribute('class','checked')}
-            }
-            num_count++;
-        },5000);
-    //获得当前banner页面
-    function getBannerPage(){
+        //自动播放时圈圈自动变化
         for(var i=0;i<3;i++){
-            if(banner_pic_lists[i].style.opacity==1){
-                return banner_pic_lists[i].getAttribute('index');
-            }
+            quanquan_list[i].removeAttribute('class');
+            if((num_count+1)%3 ==i){quanquan_list[i].setAttribute('class','checked')}
+        }
+        num_count++;
+    },5000);
+//获得当前banner页面
+function getBannerPage(){
+    for(var i=0;i<3;i++){
+        if(banner_pic_lists[i].style.opacity==1){
+            return banner_pic_lists[i].getAttribute('index');
         }
     }
-    //鼠标移入停止自动滚动 
-    banner_pic.onmouseover=function(){
-        clearInterval(timer);
-        current_banner=getBannerPage();//保存当前页面
-    }
-    //鼠标移除重启自动滚动
-    banner_pic.onmouseout=function(){
-        num_count=current_banner;
-        timer=setInterval(function(){
-            banner_pic_lists[num_count%3].style.opacity=0;
-            banner_pic_lists[(num_count+1)%3].style.opacity=1;
-            //自动播放时圈圈自动变化
-            for(var i=0;i<3;i++){
-                quanquan_list[i].removeAttribute('class');
-                if((num_count+1)%3 ==i){quanquan_list[i].setAttribute('class','checked')}
-            };
-            num_count++;
-        },5000);
-    }
+}
+//鼠标移入停止自动滚动 
+banner_pic.onmouseover=function(){
+    clearInterval(timer);
+    current_banner=getBannerPage();//保存当前页面
+}
+//鼠标移除重启自动滚动
+banner_pic.onmouseout=function(){
+    num_count=current_banner;
+    timer=setInterval(function(){
+        banner_pic_lists[num_count%3].style.opacity=0;
+        banner_pic_lists[(num_count+1)%3].style.opacity=1;
+        //自动播放时圈圈自动变化
+        for(var i=0;i<3;i++){
+            quanquan_list[i].removeAttribute('class');
+            if((num_count+1)%3 ==i){quanquan_list[i].setAttribute('class','checked')}
+        };
+        num_count++;
+    },5000);
+}
 
-    //点击圆圈切换banner
-    for(var i=0;i<3;i++){
-        EventUtil.addHandler(quanquan_list[i],'click',function(){
-            var current_quanquan=this.getAttribute('index');
-            for(var j=0;j<3;j++){
-                
-                if(j==current_quanquan){
-                    banner_pic_lists[j].style.opacity=1;
-                    quanquan_list[j].setAttribute('class','checked');
-                    current_banner=j;
-                }else{
-                    banner_pic_lists[j].style.opacity=0;
-                    quanquan_list[j].removeAttribute('class');
-                }
+//点击圆圈切换banner
+for(var i=0;i<3;i++){
+    EventUtil.addHandler(quanquan_list[i],'click',function(){
+        var current_quanquan=this.getAttribute('index');
+        for(var j=0;j<3;j++){
+            
+            if(j==current_quanquan){
+                banner_pic_lists[j].style.opacity=1;
+                quanquan_list[j].setAttribute('class','checked');
+                current_banner=j;
+            }else{
+                banner_pic_lists[j].style.opacity=0;
+                quanquan_list[j].removeAttribute('class');
             }
-        })
-    }
- 
+        }
+    })
+}
