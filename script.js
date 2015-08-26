@@ -589,6 +589,7 @@ window.onresize=function(){
     }
     //鼠标移除重启自动滚动
     banner_pic.onmouseout=function(){
+        current_banner=getBannerPage();
         num_count=current_banner;
         timer=setInterval(function(){
             banner_pic_lists[num_count%3].style.opacity=0;
