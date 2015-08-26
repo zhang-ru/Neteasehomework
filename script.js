@@ -554,6 +554,12 @@ var current_banner;
 
 window.onload=function(){
     banner_pic.style.height=browser_width*0.2785+'px';//重置banner高度以适应屏幕
+
+
+} 
+window.onresize=function(){
+    browser_width=parseInt(document.documentElement.clientWidth);
+    banner_pic.style.height=browser_width*0.2785+'px'; }
     //动画函数
     var num_count=0;
     var timer=setInterval(function(){
@@ -613,10 +619,4 @@ window.onload=function(){
             }
         })
     }
-
-} 
-window.onresize=function(){
-    browser_width=parseInt(document.documentElement.clientWidth);
-    banner_pic.style.height=browser_width*0.2785+'px'; }
-
 
