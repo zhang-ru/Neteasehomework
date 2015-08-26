@@ -1,3 +1,4 @@
+window.onload=function(){
 //cookie相关函数
     //获取cookie
     function getCookie () {
@@ -552,11 +553,11 @@ var browser_width=parseInt(document.documentElement.clientWidth);//获取窗口�
 var quanquan_list=banner_pic.getElementsByClassName('quanquan')[0].getElementsByTagName('li');
 var current_banner;
 
-window.onload=function(){
-    banner_pic.style.height=browser_width*0.2785+'px';//重置banner高度以适应屏幕
+
+banner_pic.style.height=browser_width*0.2785+'px';//重置banner高度以适应屏幕
 
  
-} 
+
 window.onresize=function(){
     browser_width=parseInt(document.documentElement.clientWidth);
     banner_pic.style.height=browser_width*0.2785+'px'; }
@@ -622,3 +623,4 @@ window.onresize=function(){
     }
 
 
+}
