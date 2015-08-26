@@ -65,8 +65,8 @@ var EventUtil = {
 
 // 封装ajax
 function ajax(obj){
-	// create xhr object
-	var xhr = (function () {
+    // create xhr object
+    var xhr = (function () {
         /*创建XMLHttpRequest对象*/
         if (typeof XMLHttpRequest != 'undefined') {
             // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -89,28 +89,28 @@ function ajax(obj){
             throw new Error('您的系统或浏览器不支持XHR对象！');
         }
     })();
-	// 给url加随机参数，防止缓存;
-	obj.url=obj.url+'?t='+new Date().getTime();
-	//给data进行格式化
-	obj.data=(function(data){
-		var arr=[];
-		for(var i in data){
-			arr.push(encodeURIComponent(i)+'='+encodeURIComponent(data[i]));
-		}
-		return arr.join('&');
-	})(obj.data);
-	// 判断get参数
-	if(obj.method === 'get'){obj.url+=obj.url.indexOf('?') == -1? '?'+obj.data:'&'+obj.data};
-	if(obj.async ===true){
-		xhr.onreadystatechange = function(){
-			if(xhr.readyState ==4){
-				callback();
-			}
-		}
-	}
+    // 给url加随机参数，防止缓存;
+    obj.url=obj.url+'?t='+new Date().getTime();
+    //给data进行格式化
+    obj.data=(function(data){
+        var arr=[];
+        for(var i in data){
+            arr.push(encodeURIComponent(i)+'='+encodeURIComponent(data[i]));
+        }
+        return arr.join('&');
+    })(obj.data);
+    // 判断get参数
+    if(obj.method === 'get'){obj.url+=obj.url.indexOf('?') == -1? '?'+obj.data:'&'+obj.data};
+    if(obj.async ===true){
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState ==4){
+                callback();
+            }
+        }
+    }
 
-	xhr.open(obj.method,obj.url,obj.async);
-	if (obj.method === 'post') {
+    xhr.open(obj.method,obj.url,obj.async);
+    if (obj.method === 'post') {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send(obj.data);    
     } else {
@@ -553,8 +553,14 @@ var quanquan_list=banner_pic.getElementsByClassName('quanquan')[0].getElementsBy
 var current_banner;
 
 window.onload=function(){
+    banner_pic.style.height=browser_width*0.2785+'px';//调整轮播图大小以适应屏幕
+} 
+window.onresize=function(){
+    browser_width=parseInt(document.documentElement.clientWidth);
     banner_pic.style.height=browser_width*0.2785+'px';
-    //动画函数
+}
+
+//动画函数
     var num_count=0;
     var timer=setInterval(function(){
 
@@ -613,11 +619,4 @@ window.onload=function(){
             }
         })
     }
-} 
-window.onresize=function(){
-    browser_width=parseInt(document.documentElement.clientWidth);
-    banner_pic.style.height=browser_width*0.2785+'px'; }
-
-
-
-//获取圆圈
+ 
