@@ -538,83 +538,82 @@ EventUtil.addHandler(close_video,'click',function(){
     mask.style.display='none';
     up_video.style.display='none';
 })
+//获取元素
+    var banner_pic=document.getElementById('banner_pic');
+    var banner_pic_list=banner_pic.getElementsByClassName('bannerpic')[0];//ul
+    var banner_pic_lists=banner_pic_list.getElementsByTagName('li');
+    var browser_width=parseInt(document.documentElement.clientWidth);//获取窗口宽度
+    var quanquan_list=banner_pic.getElementsByClassName('quanquan')[0].getElementsByTagName('li');
+    var current_banner;
+    var timer2;
+    banner_pic.style.height=browser_width*0.2785+'px';//重置banner高度以适应屏幕
 
 window.onload=function(){
-    banner_pic.style.height=browser_width*0.2785+'px';//重置banner高度以适应屏幕
+    //轮播图
+        //动画函数
+        var num_count=0;
+        var timer=setInterval(function(){
+
+                banner_pic_lists[num_count%3].style.opacity=0;
+                banner_pic_lists[(num_count+1)%3].style.opacity=1;
+
+                //自动播放时圈圈自动变化
+                for(var i=0;i<3;i++){
+                    quanquan_list[i].removeAttribute('class');
+                    if((num_count+1)%3 ==i){quanquan_list[i].setAttribute('class','checked')}
+                }
+                num_count++;
+            },5000);
+        //获得当前banner页面
+        function getBannerPage(){
+            for(var i=0;i<3;i++){
+                if(banner_pic_lists[i].style.opacity==1){
+                    return banner_pic_lists[i].getAttribute('index');
+                }
+            }
+        }
+        //鼠标移入停止自动滚动 
+        banner_pic.onmouseover=function(){
+            clearInterval(timer);
+            clearInterval(timer2);
+            current_banner=getBannerPage();//保存当前页面
+        }
+        //鼠标移出重启自动滚动
+        banner_pic.onmouseout=function(){
+            num_count=current_banner;
+            timer2=setInterval(function(){
+                banner_pic_lists[num_count%3].style.opacity=0;
+                banner_pic_lists[(num_count+1)%3].style.opacity=1;
+                //自动播放时圈圈自动变化
+                for(var i=0;i<3;i++){
+                    quanquan_list[i].removeAttribute('class');
+                    if((num_count+1)%3 ==i){quanquan_list[i].setAttribute('class','checked')}
+                };
+                num_count++;
+            },5000);
+        }
+
+        //点击圆圈切换banner
+        for(var i=0;i<3;i++){
+            EventUtil.addHandler(quanquan_list[i],'click',function(){
+                var current_quanquan=this.getAttribute('index');
+                for(var j=0;j<3;j++){
+                    
+                    if(j==current_quanquan){
+                        banner_pic_lists[j].style.opacity=1;
+                        quanquan_list[j].setAttribute('class','checked');
+                        current_banner=j;
+                    }else{
+                        banner_pic_lists[j].style.opacity=0;
+                        quanquan_list[j].removeAttribute('class');
+                    }
+                }
+            })
+        }
+
 } 
 window.onresize=function(){
     browser_width=parseInt(document.documentElement.clientWidth);
     banner_pic.style.height=browser_width*0.2785+'px'; 
 }
-
-//轮播图
-//获取元素
-var banner_pic=document.getElementById('banner_pic');
-var banner_pic_list=banner_pic.getElementsByClassName('bannerpic')[0];//ul
-var banner_pic_lists=banner_pic_list.getElementsByTagName('li');
-var browser_width=parseInt(document.documentElement.clientWidth);//获取窗口宽度
-var quanquan_list=banner_pic.getElementsByClassName('quanquan')[0].getElementsByTagName('li');
-var current_banner;
-var timer2;
-
-    //动画函数
-    var num_count=0;
-    var timer=setInterval(function(){
-
-            banner_pic_lists[num_count%3].style.opacity=0;
-            banner_pic_lists[(num_count+1)%3].style.opacity=1;
-
-            //自动播放时圈圈自动变化
-            for(var i=0;i<3;i++){
-                quanquan_list[i].removeAttribute('class');
-                if((num_count+1)%3 ==i){quanquan_list[i].setAttribute('class','checked')}
-            }
-            num_count++;
-        },5000);
-    //获得当前banner页面
-    function getBannerPage(){
-        for(var i=0;i<3;i++){
-            if(banner_pic_lists[i].style.opacity==1){
-                return banner_pic_lists[i].getAttribute('index');
-            }
-        }
-    }
-    //鼠标移入停止自动滚动 
-    banner_pic.onmouseover=function(){
-        clearInterval(timer);
-        clearInterval(timer2);
-        current_banner=getBannerPage();//保存当前页面
-    }
-    //鼠标移除重启自动滚动
-    banner_pic.onmouseout=function(){
-        num_count=current_banner;
-        timer2=setInterval(function(){
-            banner_pic_lists[num_count%3].style.opacity=0;
-            banner_pic_lists[(num_count+1)%3].style.opacity=1;
-            //自动播放时圈圈自动变化
-            for(var i=0;i<3;i++){
-                quanquan_list[i].removeAttribute('class');
-                if((num_count+1)%3 ==i){quanquan_list[i].setAttribute('class','checked')}
-            };
-            num_count++;
-        },5000);
-    }
-
-    //点击圆圈切换banner
-    for(var i=0;i<3;i++){
-        EventUtil.addHandler(quanquan_list[i],'click',function(){
-            var current_quanquan=this.getAttribute('index');
-            for(var j=0;j<3;j++){
-                
-                if(j==current_quanquan){
-                    banner_pic_lists[j].style.opacity=1;
-                    quanquan_list[j].setAttribute('class','checked');
-                    current_banner=j;
-                }else{
-                    banner_pic_lists[j].style.opacity=0;
-                    quanquan_list[j].removeAttribute('class');
-                }
-            }
-        })
-    }
 
