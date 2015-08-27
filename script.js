@@ -65,8 +65,8 @@ var EventUtil = {
 
 // 封装ajax
 function ajax(obj){
-	// create xhr object
-	var xhr = (function () {
+    // create xhr object
+    var xhr = (function () {
         /*创建XMLHttpRequest对象*/
         if (typeof XMLHttpRequest != 'undefined') {
             // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -89,28 +89,28 @@ function ajax(obj){
             throw new Error('您的系统或浏览器不支持XHR对象！');
         }
     })();
-	// 给url加随机参数，防止缓存;
-	obj.url=obj.url+'?t='+new Date().getTime();
-	//给data进行格式化
-	obj.data=(function(data){
-		var arr=[];
-		for(var i in data){
-			arr.push(encodeURIComponent(i)+'='+encodeURIComponent(data[i]));
-		}
-		return arr.join('&');
-	})(obj.data);
-	// 判断get参数
-	if(obj.method === 'get'){obj.url+=obj.url.indexOf('?') == -1? '?'+obj.data:'&'+obj.data};
-	if(obj.async ===true){
-		xhr.onreadystatechange = function(){
-			if(xhr.readyState ==4){
-				callback();
-			}
-		}
-	}
+    // 给url加随机参数，防止缓存;
+    obj.url=obj.url+'?t='+new Date().getTime();
+    //给data进行格式化
+    obj.data=(function(data){
+        var arr=[];
+        for(var i in data){
+            arr.push(encodeURIComponent(i)+'='+encodeURIComponent(data[i]));
+        }
+        return arr.join('&');
+    })(obj.data);
+    // 判断get参数
+    if(obj.method === 'get'){obj.url+=obj.url.indexOf('?') == -1? '?'+obj.data:'&'+obj.data};
+    if(obj.async ===true){
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState ==4){
+                callback();
+            }
+        }
+    }
 
-	xhr.open(obj.method,obj.url,obj.async);
-	if (obj.method === 'post') {
+    xhr.open(obj.method,obj.url,obj.async);
+    if (obj.method === 'post') {
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.send(obj.data);    
     } else {
@@ -177,7 +177,7 @@ function ajax_success(data){
            _name.style.display='none';
            _categoryName.style.display='none';
             //课程鼠标悬浮
-            oLi.onmouseover=function(){
+            oLi.onmouseover = function(){
                 var _img = this.getElementsByTagName("img")[0];
                 var _description = this.getElementsByTagName("p")[0];
                 var _provider = this.getElementsByTagName("p")[1];
@@ -188,7 +188,7 @@ function ajax_success(data){
                 var _usericon=document.createElement("img");
 
                 this.setAttribute('class','main_course_hover');
-                this.innerHTML='';
+               // this.innerHTML='';
                 this.appendChild(_img);
                 this.appendChild(_name);
                 this.appendChild(_follower);
@@ -205,11 +205,7 @@ function ajax_success(data){
                 _categoryName.style.cssText='font-size:12px; color:#666; margin:0 0 5px 239px;';
                 _description.style.cssText='clear:both;font:14px/1.5 Microsoft Yahei; height:40px; color:#666; padding:20px 20px 20px; text-indent:2em; position:relative; bottom:0;overflow: hidden;text-overflow:ellipsis;';
                 _categoryName.style.display='block';
-
-
-                
-
-            }
+            };
             //鼠标移出
             oLi.onmouseout=function(){
                 this.setAttribute('class','main_course');
@@ -542,81 +538,82 @@ EventUtil.addHandler(close_video,'click',function(){
     mask.style.display='none';
     up_video.style.display='none';
 })
+//获取元素
+    var banner_pic=document.getElementById('banner_pic');
+    var banner_pic_list=banner_pic.getElementsByClassName('bannerpic')[0];//ul
+    var banner_pic_lists=banner_pic_list.getElementsByTagName('li');
+    var browser_width=parseInt(document.documentElement.clientWidth);//获取窗口宽度
+    var quanquan_list=banner_pic.getElementsByClassName('quanquan')[0].getElementsByTagName('li');
+    var current_banner;
+    var timer2;
+    banner_pic.style.height=browser_width*0.2785+'px';//重置banner高度以适应屏幕
 
 window.onload=function(){
-    banner_pic.style.height=browser_width*0.2785+'px';//重置banner高度以适应屏幕
+    //轮播图
+        //动画函数
+        var num_count=0;
+        var timer=setInterval(function(){
+
+                banner_pic_lists[num_count%3].style.opacity=0;
+                banner_pic_lists[(num_count+1)%3].style.opacity=1;
+
+                //自动播放时圈圈自动变化
+                for(var i=0;i<3;i++){
+                    quanquan_list[i].removeAttribute('class');
+                    if((num_count+1)%3 ==i){quanquan_list[i].setAttribute('class','checked')}
+                }
+                num_count++;
+            },5000);
+        //获得当前banner页面
+        function getBannerPage(){
+            for(var i=0;i<3;i++){
+                if(banner_pic_lists[i].style.opacity==1){
+                    return banner_pic_lists[i].getAttribute('index');
+                }
+            }
+        }
+        //鼠标移入停止自动滚动 
+        banner_pic.onmouseover=function(){
+            clearInterval(timer);
+            clearInterval(timer2);
+            current_banner=getBannerPage();//保存当前页面
+        }
+        //鼠标移出重启自动滚动
+        banner_pic.onmouseout=function(){
+            num_count=current_banner;
+            timer2=setInterval(function(){
+                banner_pic_lists[num_count%3].style.opacity=0;
+                banner_pic_lists[(num_count+1)%3].style.opacity=1;
+                //自动播放时圈圈自动变化
+                for(var i=0;i<3;i++){
+                    quanquan_list[i].removeAttribute('class');
+                    if((num_count+1)%3 ==i){quanquan_list[i].setAttribute('class','checked')}
+                };
+                num_count++;
+            },5000);
+        }
+
+        //点击圆圈切换banner
+        for(var i=0;i<3;i++){
+            EventUtil.addHandler(quanquan_list[i],'click',function(){
+                var current_quanquan=this.getAttribute('index');
+                for(var j=0;j<3;j++){
+                    
+                    if(j==current_quanquan){
+                        banner_pic_lists[j].style.opacity=1;
+                        quanquan_list[j].setAttribute('class','checked');
+                        current_banner=j;
+                    }else{
+                        banner_pic_lists[j].style.opacity=0;
+                        quanquan_list[j].removeAttribute('class');
+                    }
+                }
+            })
+        }
+
 } 
 window.onresize=function(){
     browser_width=parseInt(document.documentElement.clientWidth);
     banner_pic.style.height=browser_width*0.2785+'px'; 
 }
-
-//轮播图
-//获取元素
-var banner_pic=document.getElementById('banner_pic');
-var banner_pic_list=banner_pic.getElementsByClassName('bannerpic')[0];//ul
-var banner_pic_lists=banner_pic_list.getElementsByTagName('li');
-var browser_width=parseInt(document.documentElement.clientWidth);//获取窗口宽度
-var quanquan_list=banner_pic.getElementsByClassName('quanquan')[0].getElementsByTagName('li');
-var current_banner;
-
-    //动画函数
-    var num_count=0;
-    var timer=setInterval(function(){
-
-            banner_pic_lists[num_count%3].style.opacity=0;
-            banner_pic_lists[(num_count+1)%3].style.opacity=1;
-
-            //自动播放时圈圈自动变化
-            for(var i=0;i<3;i++){
-                quanquan_list[i].removeAttribute('class');
-                if((num_count+1)%3 ==i){quanquan_list[i].setAttribute('class','checked')}
-            }
-            num_count++;
-        },5000);
-    //获得当前banner页面
-    function getBannerPage(){
-        for(var i=0;i<3;i++){
-            if(banner_pic_lists[i].style.opacity==1){
-                return banner_pic_lists[i].getAttribute('index');
-            }
-        }
-    }
-    //鼠标移入停止自动滚动 
-    banner_pic.onmouseover=function(){
-        clearInterval(timer);
-        current_banner=getBannerPage();//保存当前页面
-    }
-    //鼠标移除重启自动滚动
-    banner_pic.onmouseout=function(){
-        num_count=current_banner;
-        timer=setInterval(function(){
-            banner_pic_lists[num_count%3].style.opacity=0;
-            banner_pic_lists[(num_count+1)%3].style.opacity=1;
-            //自动播放时圈圈自动变化
-            for(var i=0;i<3;i++){
-                quanquan_list[i].removeAttribute('class');
-                if((num_count+1)%3 ==i){quanquan_list[i].setAttribute('class','checked')}
-            };
-            num_count++;
-        },5000);
-    }
-
-    //点击圆圈切换banner
-    for(var i=0;i<3;i++){
-        EventUtil.addHandler(quanquan_list[i],'click',function(){
-            var current_quanquan=this.getAttribute('index');
-            for(var j=0;j<3;j++){
-                
-                if(j==current_quanquan){
-                    banner_pic_lists[j].style.opacity=1;
-                    quanquan_list[j].setAttribute('class','checked');
-                    current_banner=j;
-                }else{
-                    banner_pic_lists[j].style.opacity=0;
-                    quanquan_list[j].removeAttribute('class');
-                }
-            }
-        })
-    }
 
