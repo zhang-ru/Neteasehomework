@@ -394,6 +394,12 @@ EventUtil.addHandler(login_button,'click',login_fun);
 
  var mask=document.getElementById('mask');
  var loginBox=document.getElementById('login_box');
+ 
+ // 回车提交表单
+ EventUtil.addHandler(login_box,'keyup',function(event){
+     event =event||window.event;
+     if(event.keyCode == 13){login_fun()};
+ });
  var cancleLogin=loginBox.getElementsByClassName('close_button')[0];
  //关闭登录框
  EventUtil.addHandler(cancleLogin,'click',function(){
