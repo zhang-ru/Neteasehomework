@@ -176,71 +176,67 @@ function ajax_success(data){
             oLi.appendChild(_categoryName);
            _name.style.display='none';
            _categoryName.style.display='none';
-    }
             //课程鼠标悬浮
-            var course_list=document.getElementById("courselist_ajax").getElementsByTagName('li');
-            for(var i=0;i<course_list.length;i++){
-                course_list[i].onmouseover = function(){
-                    var _img = this.getElementsByTagName("img")[0];
-                    var _description = this.getElementsByTagName("p")[0];
-                    var _provider = this.getElementsByTagName("p")[1];
-                    var _follower = this.getElementsByTagName("p")[2];
-                    var _price =this.getElementsByTagName("p")[3]; 
-                    var _name =this.getElementsByTagName("p")[4]; 
-                    var _categoryName =this.getElementsByTagName("p")[5]; 
-                    var _usericon=document.createElement("img");
+            oLi.onmouseover = function(){
+                var _img = this.getElementsByTagName("img")[0];
+                var _description = this.getElementsByTagName("p")[0];
+                var _provider = this.getElementsByTagName("p")[1];
+                var _follower = this.getElementsByTagName("p")[2];
+                var _price =this.getElementsByTagName("p")[3]; 
+                var _name =this.getElementsByTagName("p")[4]; 
+                var _categoryName =this.getElementsByTagName("p")[5]; 
+                var _usericon=document.createElement("img");
 
-                    this.setAttribute('class','main_course_hover');
-                   // this.innerHTML='';
-                    this.appendChild(_img);
-                    this.appendChild(_name);
-                    this.appendChild(_follower);
-                    this.appendChild(_provider);
-                    this.appendChild(_categoryName);
-                    this.appendChild(_description);
-                    this.appendChild(_price);
+                this.setAttribute('class','main_course_hover');
+               // this.innerHTML='';
+                this.appendChild(_img);
+                this.appendChild(_name);
+                this.appendChild(_follower);
+                this.appendChild(_provider);
+                this.appendChild(_categoryName);
+                this.appendChild(_description);
+                this.appendChild(_price);
 
-                    _price.style.display='none';
-                    _img.style.cssText='float:left;width: 219px; height: 122px;';
-                    _name.style.cssText='display:block; font:18px Microsoft Yahei; margin:15px 15px 15px 239px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;';
-                    _follower.style.cssText='background: url(images/usericon.png) no-repeat 1px; padding-left: 16px; font-size:12px; color:#666; margin:0 0 15px 239px;';
-                    _provider.style.cssText='font-size:12px; color:#666; margin:0 0 5px 239px;';
-                    _categoryName.style.cssText='font-size:12px; color:#666; margin:0 0 5px 239px;';
-                    _description.style.cssText='clear:both;font:14px/1.5 Microsoft Yahei; height:40px; color:#666; padding:20px 20px 20px; text-indent:2em; position:relative; bottom:0;overflow: hidden;text-overflow:ellipsis;';
-                    _categoryName.style.display='block';
-                };
+                _price.style.display='none';
+                _img.style.cssText='float:left;width: 219px; height: 122px;';
+                _name.style.cssText='display:block; font:18px Microsoft Yahei; margin:15px 15px 15px 239px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;';
+                _follower.style.cssText='background: url(images/usericon.png) no-repeat 1px; padding-left: 16px; font-size:12px; color:#666; margin:0 0 15px 239px;';
+                _provider.style.cssText='font-size:12px; color:#666; margin:0 0 5px 239px;';
+                _categoryName.style.cssText='font-size:12px; color:#666; margin:0 0 5px 239px;';
+                _description.style.cssText='clear:both;font:14px/1.5 Microsoft Yahei; height:40px; color:#666; padding:20px 20px 20px; text-indent:2em; position:relative; bottom:0;overflow: hidden;text-overflow:ellipsis;';
+                _categoryName.style.display='block';
+            };
             //鼠标移出
-                course_list[i].onmouseout=function(){
-                    this.setAttribute('class','main_course');
-                    var _img = this.getElementsByTagName("img")[0];
-                    var _description = this.getElementsByTagName("p")[4];
-                    var _provider = this.getElementsByTagName("p")[2];
-                    var _follower = this.getElementsByTagName("p")[1];
-                    var _price =this.getElementsByTagName("p")[5]; 
-                    var _name = this.getElementsByTagName("p")[0];
-                    var _categoryName =this.getElementsByTagName("p")[3]; 
+            oLi.onmouseout=function(){
+                this.setAttribute('class','main_course');
+                var _img = this.getElementsByTagName("img")[0];
+                var _description = this.getElementsByTagName("p")[4];
+                var _provider = this.getElementsByTagName("p")[2];
+                var _follower = this.getElementsByTagName("p")[1];
+                var _price =this.getElementsByTagName("p")[5]; 
+                var _name = this.getElementsByTagName("p")[0];
+                var _categoryName =this.getElementsByTagName("p")[3]; 
 
-                     _img.style.cssText='';
-                    _name.style.cssText='';
-                    _follower.style.cssText='';
-                    _provider.style.cssText='';
-                    _categoryName.style.cssText='';
-                    _description.style.cssText='';
-                    this.appendChild(_img);
-                    this.appendChild(_description);
-                    this.appendChild(_provider);
-                    this.appendChild(_follower);
-                    this.appendChild(_price);
-                    this.appendChild(_name);
-                    this.appendChild(_categoryName);
-                    _name.style.display='none';
-                    _categoryName.style.display='none';
-                    _price.style.display='block';
-                }   
+                 _img.style.cssText='';
+                _name.style.cssText='';
+                _follower.style.cssText='';
+                _provider.style.cssText='';
+                _categoryName.style.cssText='';
+                _description.style.cssText='';
+                this.appendChild(_img);
+                this.appendChild(_description);
+                this.appendChild(_provider);
+                this.appendChild(_follower);
+                this.appendChild(_price);
+                this.appendChild(_name);
+                this.appendChild(_categoryName);
+                _name.style.display='none';
+                _categoryName.style.display='none';
+                _price.style.display='block';
+            }   
             
-            }
-         }
-            
+        }
+}
 //载入课程列表ajax
 ajax({
     method : 'get',
