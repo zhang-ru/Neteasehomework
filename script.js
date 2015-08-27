@@ -74,9 +74,9 @@ function ajax(obj){
         } else if (typeof ActiveXObject != 'undefined') {
             // code for IE6, IE5
             var version = [
-                                        'MSXML2.XMLHttp.6.0',
-                                        'MSXML2.XMLHttp.3.0',
-                                        'MSXML2.XMLHttp'
+                'MSXML2.XMLHttp.6.0',
+                'MSXML2.XMLHttp.3.0',
+                'MSXML2.XMLHttp'
             ];
             for (var i = 0; version.length; i ++) {
                 try {
@@ -128,7 +128,7 @@ function ajax(obj){
         }    
     }
 }
-//获取课程列表成功函数
+//ajax获取课程列表成功函数
 function ajax_success(data){
     var _data= JSON.parse(data);
 
@@ -138,6 +138,7 @@ function ajax_success(data){
             var oLi = document.createElement("li");
             oLi.setAttribute("class","main_course");
             oUl.appendChild(oLi);
+
             //创建子元素
             var _img = document.createElement("img");
             var _description = document.createElement("p");
@@ -176,6 +177,7 @@ function ajax_success(data){
             oLi.appendChild(_categoryName);
            _name.style.display='none';
            _categoryName.style.display='none';
+
             //课程鼠标悬浮
             oLi.onmouseover = function(){
                 var _img = this.getElementsByTagName("img")[0];
@@ -251,38 +253,36 @@ ajax({
 });
 //载入热门推荐ajax函数
 function hot_list_fun(data){
-        var _data= eval(data);
-        var oUl = document.getElementById("side_courselist_ajax");
-        var timer=0;
-            setInterval(function(){
-                oUl.innerHTML='';
-                    //5秒滚动一门课程
-                    for(var i=timer+0;i<10+timer && i<20;i++){
-                        var oLi = document.createElement("li");
-                        
-                        oUl.appendChild(oLi);
-
-                        var _img = document.createElement("img");
-                        var _name = document.createElement("p");
-                        var _follower = document.createElement("p");
-
-                        _img.setAttribute("class", "side_course");
-                        _img.setAttribute("src", _data[i].smallPhotoUrl);
-
-                        _name.setAttribute("class","side_course_title");
-                        _name.innerHTML=_data[i].name;
-
-                        _follower.innerHTML=_data[i].learnerCount;
-
-                        oLi.appendChild(_img);
-                        oLi.appendChild(_name);
-                        oLi.appendChild(_follower);
+    var _data= eval(data);
+    var oUl = document.getElementById("side_courselist_ajax");
+    var timer=0;
+        setInterval(function(){
+            oUl.innerHTML='';
+                //5秒滚动一门课程
+                for(var i=timer+0;i<10+timer && i<20;i++){
+                    var oLi = document.createElement("li");
                     
-                     }
-                     timer>=10?timer=10:timer++;
-            },5000);
+                    oUl.appendChild(oLi);
 
-        
+                    var _img = document.createElement("img");
+                    var _name = document.createElement("p");
+                    var _follower = document.createElement("p");
+
+                    _img.setAttribute("class", "side_course");
+                    _img.setAttribute("src", _data[i].smallPhotoUrl);
+
+                    _name.setAttribute("class","side_course_title");
+                    _name.innerHTML=_data[i].name;
+
+                    _follower.innerHTML=_data[i].learnerCount;
+
+                    oLi.appendChild(_img);
+                    oLi.appendChild(_name);
+                    oLi.appendChild(_follower);
+                
+                 }
+                 timer>=10?timer=10:timer++;
+        },5000);
 }
 //页面加载后载入热门课程列表
 ajax({
@@ -338,7 +338,7 @@ EventUtil.addHandler(guanzhu_button,'click',function() {
         loginBox.style.display='block';
      }
     });
-    //判断cookie中是否已经关注
+//判断cookie中是否已经关注
 if(getCookie()['followSuc'] == '1'){
     alreadyguanzhu.style.display='block';
     guanzhu_button.style.display='none';
@@ -387,6 +387,7 @@ EventUtil.addHandler(cancelguanzhu,'click',function(){
     async : true
     })
  }
+//登录按钮添加事件
 EventUtil.addHandler(login_button,'click',login_fun);
 
 
@@ -454,7 +455,6 @@ var page_type = function(){
     if(main_course_tab1.className=='main_course_tab_checked'){return '10'}
     else if(main_course_tab2.className=='main_course_tab_checked'){return '20';}
 }
-//判断当前页面API
 
  //判断当前点击页面并实现点击页面切换课程
  
@@ -612,6 +612,7 @@ window.onload=function(){
         }
 
 } 
+//窗口调整后自适应banner宽度
 window.onresize=function(){
     browser_width=parseInt(document.documentElement.clientWidth);
     banner_pic.style.height=browser_width*0.2785+'px'; 
